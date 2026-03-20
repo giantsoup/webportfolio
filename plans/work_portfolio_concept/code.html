@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Architect | Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-dim": "#00deec",
+                        "background": "#0d0d15",
+                        "inverse-surface": "#fcf8ff",
+                        "tertiary-dim": "#e7004c",
+                        "secondary": "#00eefc",
+                        "surface-container-lowest": "#000000",
+                        "on-tertiary": "#490012",
+                        "outline": "#76747f",
+                        "primary-fixed-dim": "#d061ff",
+                        "on-tertiary-fixed": "#39000c",
+                        "on-primary": "#4f006d",
+                        "surface-container-low": "#13131c",
+                        "secondary-container": "#006970",
+                        "surface-variant": "#252531",
+                        "tertiary-fixed": "#ff909b",
+                        "primary-container": "#d878ff",
+                        "on-background": "#f2effb",
+                        "on-primary-fixed": "#000000",
+                        "error-dim": "#d73357",
+                        "tertiary-fixed-dim": "#ff7989",
+                        "surface-tint": "#df8eff",
+                        "outline-variant": "#484751",
+                        "tertiary": "#ff6e81",
+                        "inverse-primary": "#9a00d0",
+                        "on-tertiary-fixed-variant": "#780023",
+                        "secondary-fixed-dim": "#00deec",
+                        "secondary-fixed": "#00eefc",
+                        "primary-dim": "#bb00fc",
+                        "on-primary-container": "#3d0055",
+                        "on-surface": "#f2effb",
+                        "surface-dim": "#0d0d15",
+                        "on-error": "#490013",
+                        "on-error-container": "#ffb2b9",
+                        "surface-container": "#191923",
+                        "surface-container-highest": "#252531",
+                        "surface-bright": "#2b2b38",
+                        "surface-container-high": "#1f1f29",
+                        "on-secondary": "#005359",
+                        "primary-fixed": "#d878ff",
+                        "tertiary-container": "#ff0355",
+                        "inverse-on-surface": "#55545e",
+                        "error-container": "#a70138",
+                        "on-tertiary-container": "#000000",
+                        "on-secondary-fixed": "#003f43",
+                        "on-surface-variant": "#acaab5",
+                        "on-secondary-fixed-variant": "#005e64",
+                        "error": "#ff6e84",
+                        "primary": "#df8eff",
+                        "surface": "#0d0d15",
+                        "on-primary-fixed-variant": "#4b0068",
+                        "on-secondary-container": "#e3fdff"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0d0d15;
+            background-image: 
+                linear-gradient(rgba(72, 71, 81, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(72, 71, 81, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .text-glow-primary {
+            text-shadow: 0 0 15px rgba(223, 142, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface selection:bg-primary/30 selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0d0d15]/80 backdrop-blur-xl border-b border-[#df8eff]/10 shadow-[0_0_20px_rgba(223,142,255,0.06)]">
+<div class="flex justify-between items-center px-8 h-16 max-w-7xl mx-auto">
+<div class="text-xl font-black text-[#df8eff] tracking-widest font-['Space_Grotesk'] uppercase">
+                DEV_PORTFOLIO
+            </div>
+<nav class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tighter font-bold uppercase text-sm">
+<a class="text-[#00eefc] border-b-2 border-[#00eefc] pb-1" href="#">Work</a>
+<a class="text-[#f2effb]/70 hover:text-[#df8eff] transition-colors" href="#">GitHub</a>
+<a class="text-[#f2effb]/70 hover:text-[#df8eff] transition-colors" href="#">Contact</a>
+<a class="text-[#f2effb]/70 hover:text-[#df8eff] transition-colors" href="#">LinkedIn</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#df8eff] hover:bg-[#df8eff]/5 transition-all duration-300 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
+<!-- Hero Section / Filter -->
+<section class="mb-20">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<span class="inline-block px-3 py-1 bg-primary/10 text-primary font-label text-[10px] tracking-[0.2em] uppercase mb-4 border-l-2 border-primary">
+                        Architecture &amp; Engineering
+                    </span>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tight text-on-surface mb-6 leading-[0.9]">
+                        Selected <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Artifacts</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-xl leading-relaxed">
+                        A curated collection of full-stack engineering solutions, ranging from high-performance Laravel ecosystems to optimized legacy WordPress transformations.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-3 font-label text-[10px] tracking-widest uppercase">
+<button class="px-6 py-3 bg-secondary text-on-secondary-fixed font-bold rounded-sm shadow-[0_0_15px_rgba(0,238,252,0.2)]">All Systems</button>
+<button class="px-6 py-3 border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 transition-all">Custom Laravel</button>
+<button class="px-6 py-3 border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 transition-all">Legacy WordPress</button>
+</div>
+</div>
+</section>
+<!-- Project Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project Card 1: Laravel -->
+<article class="group relative bg-surface-container hover:bg-surface-container-highest transition-all duration-500 rounded-sm overflow-hidden border-t-2 border-transparent hover:border-tertiary">
+<div class="aspect-video relative overflow-hidden bg-surface-container-lowest">
+<img alt="Server Architecture Visual" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Digital server rack with purple neon lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOh-HZrmlhp2_357uThePsqfY6bnfqP0ZmZoe6aswhDzAr89A978MGw9dMf59-nZVC91Srui1BFQa9rYOVPUSdeGFVUGIWFP7Icbecf9zQ8t0VFcIuQIKDD_rq6ZRr7bJLNcycPi9fQ2dPuU6X7UdYwSTz1IVGEV338pxV2ukQTCgaaCuwHPRR_kJ1CYRAWsBa1eJWECjDshglVlYKn9UwqE9yY7FagsPSR40u8GmN_dU-wWGIFZK2-SjhRiCEMS8evenh7Xt9kiUd"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-label tracking-widest text-secondary font-bold uppercase">Enterprise SaaS</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="data_object">data_object</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3 text-on-surface">Vortex Analytics Engine</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+                        A custom Laravel application built for real-time telemetry processing with a Vue.js reactive dashboard.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">PHP 8.2</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">Laravel</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">MySQL</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">Vue.js</span>
+</div>
+<a class="inline-flex items-center gap-2 text-secondary text-xs font-bold font-label tracking-[0.2em] uppercase group/link" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Project Card 2: WordPress Legacy -->
+<article class="group relative bg-surface-container hover:bg-surface-container-highest transition-all duration-500 rounded-sm overflow-hidden border-t-2 border-transparent hover:border-tertiary">
+<div class="aspect-video relative overflow-hidden bg-surface-container-lowest">
+<img alt="Network Infrastructure Visual" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Abstract glowing network node connection lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjnNdtkJwFrvvfQpRCT4t1i57pU-6w34E8OS3hgV6TR6f2-7khROl3c9s4shGCt7t5arR5kd1PySEm1gvroZdx3WocgHukgsrbUOh_rQeuFKSnoAmjBxKlhBrtXJjKAF06qCVXNsMPmeaxYxIdLSChCV-zquILf0Lcot1uZ2DCb6J6BVO9yIbKsbKK6Kf8mOKyA-PPcEcpqVXh7ln0aWbDBFdZUXjQdZbz9PLFe3e3_ieYFvRtm5l9ZDtYNF8odvRuxrkrGPmVObSP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-label tracking-widest text-primary font-bold uppercase">Legacy Refactor</span>
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="history">history</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3 text-on-surface">OmniPress Core 2.0</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+                        Deep architectural optimization for a high-traffic WordPress multisite installation, reducing TTFB by 40%.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">WordPress</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">PHP</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">Redis</span>
+</div>
+<a class="inline-flex items-center gap-2 text-secondary text-xs font-bold font-label tracking-[0.2em] uppercase group/link" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Project Card 3: Laravel API -->
+<article class="group relative bg-surface-container hover:bg-surface-container-highest transition-all duration-500 rounded-sm overflow-hidden border-t-2 border-transparent hover:border-tertiary">
+<div class="aspect-video relative overflow-hidden bg-surface-container-lowest">
+<img alt="Cyber Security Visual" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Abstract neon blue circuit board pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG8sZ-XHh2frvQiofWTeUm7TFzVDYBYFfadfK84eeVlmhWHzdSx5CZxdtV4Z7wKaNMNW4xoWGaZYZuHwoujpfFuSAIkK1RO9RHMJ6_osy3x5DkaTv6cMjuCvbIgv6QpdEmlkkjqxTHKBmBdp212tM45ev6ZQFnlcpFIno683czt5j1U8jqWFRz3cDGDw1xgC4hFSGzraZcbKA8w5PkTjmnLaobukmMGDf09zFs5EeJQ_vs82aaD4w0FbFASG3o7ROnERsgnbkeCPAT"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-label tracking-widest text-secondary font-bold uppercase">API Development</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="api">api</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3 text-on-surface">Nexus API Gateway</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+                        Secure RESTful API infrastructure for third-party logistics integration using Laravel Sanctum.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">Laravel</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">Sanctum</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">MySQL</span>
+</div>
+<a class="inline-flex items-center gap-2 text-secondary text-xs font-bold font-label tracking-[0.2em] uppercase group/link" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Project Card 4: WordPress E-commerce -->
+<article class="group relative bg-surface-container hover:bg-surface-container-highest transition-all duration-500 rounded-sm overflow-hidden border-t-2 border-transparent hover:border-tertiary">
+<div class="aspect-video relative overflow-hidden bg-surface-container-lowest">
+<img alt="Future Technology Visual" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Glowy purple sphere of digital information" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwyEfzfH2zsvat21CbOKL8W2fZMrsdzPhoHzz_Z6ltLRm2P0JUe5NoKCAHhheKQAu2aVsm_ragDiCfEk5ud_MBNwNZFh19ef99pw94zKq5-x4GqFHmsEuCpfTh8821IyJP4euGsYEHjLMMwKad4SkwJX_eh-KsLj4Rue2RCUAzJQdMcD2krj5ZRMELRiRd7qNZyDgeyuMQxz3vToEYG4n-z6atKpBqZ8O1vAO4Vm1gtksWM-8zte5Z3Ey8E75Hjc7oGKpq9pBtTaqh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-label tracking-widest text-primary font-bold uppercase">WooCommerce Custom</span>
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="shopping_cart">shopping_cart</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3 text-on-surface">Titan E-Store</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+                        Bespoke WooCommerce implementation with a headless React frontend for extreme performance.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">WordPress</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">React</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">GraphQL</span>
+</div>
+<a class="inline-flex items-center gap-2 text-secondary text-xs font-bold font-label tracking-[0.2em] uppercase group/link" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Project Card 5: Laravel Dashboard -->
+<article class="group relative bg-surface-container hover:bg-surface-container-highest transition-all duration-500 rounded-sm overflow-hidden border-t-2 border-transparent hover:border-tertiary">
+<div class="aspect-video relative overflow-hidden bg-surface-container-lowest">
+<img alt="Code Interface Visual" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Extreme close up of code on a monitor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQnD283ayAdZ9rIen2Geb7tZbHMEN9vdUp3DAzPyhk0TTiy0o8hxA6XVFcfpFlITlk7kTaxLldnI51DUykMOqjEmk4MFmLTaBT8d2X38-fvz4FPGqvORGl0RkxNilJzhc5nMhMPGUDrKNTQ520pYBGWUap_-LTCwpyzx23Ep2JsCL5vB0HeT3V9wfnHeZVYM-yH3XtgqKP8GSYj30cIlOT2LjWYb_iciLEqQW34rjcuOqxdgLBVg0VyJPwAaHG3pJhyvfwksIDspJe"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-label tracking-widest text-secondary font-bold uppercase">Internal Tools</span>
+<span class="material-symbols-outlined text-primary text-xl" data-icon="dashboard">dashboard</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3 text-on-surface">Sentinel Dashboard</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+                        Monitoring system for distributed microservices, featuring automated failure recovery alerts.
+                    </p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">Laravel</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">Alpine.js</span>
+<span class="px-2 py-1 bg-surface-container-high text-[9px] font-label text-outline uppercase tracking-wider">PostgreSQL</span>
+</div>
+<a class="inline-flex items-center gap-2 text-secondary text-xs font-bold font-label tracking-[0.2em] uppercase group/link" href="#">
+                        View Details
+                        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Status Pulse CTA -->
+<div class="bg-surface-container-low border border-outline-variant/10 rounded-sm flex flex-col items-center justify-center p-8 text-center border-dashed">
+<div class="relative mb-6">
+<div class="w-4 h-4 bg-secondary rounded-full"></div>
+<div class="absolute inset-0 w-4 h-4 bg-secondary rounded-full animate-ping opacity-75"></div>
+</div>
+<h4 class="font-headline text-xl font-bold mb-2">Systems Online</h4>
+<p class="text-on-surface-variant text-sm mb-6">Available for custom architecture projects and legacy modernization.</p>
+<button class="w-full py-4 border border-secondary text-secondary font-label text-[10px] tracking-[0.2em] uppercase hover:bg-secondary/10 transition-all">
+                    Initiate Connection
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-[#484751]/10 bg-[#0d0d15]">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4 font-['Inter'] text-[10px] tracking-[0.2em] uppercase text-[#f2effb]/50">
+<div>
+                © 2024 DIGITAL ARCHITECT. ALL RIGHTS RESERVED.
+            </div>
+<div class="flex gap-8">
+<a class="hover:text-[#00eefc] transition-colors" href="#">GitHub</a>
+<a class="hover:text-[#00eefc] transition-colors" href="#">LinkedIn</a>
+<a class="hover:text-[#00eefc] transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -21,3 +21,32 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# OS metadata
+.DS_Store
+
+# AI and agent tooling
+/.agents
+/.codex
+/.claude
+/.continue
+/.cursor
+/.gemini
+/.kiro
+/.qodo
+/.roo
+/.roo-code
+/.specstory
+/.windsurf
+/.aider*
+/.clinerules
+/.cursorrules
+/.cursorignore
+/.cursorindexingignore
+/.mcp.json
+/.windsurfrules
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md
+/boost.json
+/memory.md

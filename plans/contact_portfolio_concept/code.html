@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-dim": "#00deec",
+              "background": "#0d0d15",
+              "inverse-surface": "#fcf8ff",
+              "tertiary-dim": "#e7004c",
+              "secondary": "#00eefc",
+              "surface-container-lowest": "#000000",
+              "on-tertiary": "#490012",
+              "outline": "#76747f",
+              "primary-fixed-dim": "#d061ff",
+              "on-tertiary-fixed": "#39000c",
+              "on-primary": "#4f006d",
+              "surface-container-low": "#13131c",
+              "secondary-container": "#006970",
+              "surface-variant": "#252531",
+              "tertiary-fixed": "#ff909b",
+              "primary-container": "#d878ff",
+              "on-background": "#f2effb",
+              "on-primary-fixed": "#000000",
+              "error-dim": "#d73357",
+              "tertiary-fixed-dim": "#ff7989",
+              "surface-tint": "#df8eff",
+              "outline-variant": "#484751",
+              "tertiary": "#ff6e81",
+              "inverse-primary": "#9a00d0",
+              "on-tertiary-fixed-variant": "#780023",
+              "secondary-fixed-dim": "#00deec",
+              "secondary-fixed": "#00eefc",
+              "primary-dim": "#bb00fc",
+              "on-primary-container": "#3d0055",
+              "on-surface": "#f2effb",
+              "surface-dim": "#0d0d15",
+              "on-error": "#490013",
+              "on-error-container": "#ffb2b9",
+              "surface-container": "#191923",
+              "surface-container-highest": "#252531",
+              "surface-bright": "#2b2b38",
+              "surface-container-high": "#1f1f29",
+              "on-secondary": "#005359",
+              "primary-fixed": "#d878ff",
+              "tertiary-container": "#ff0355",
+              "inverse-on-surface": "#55545e",
+              "error-container": "#a70138",
+              "on-tertiary-container": "#000000",
+              "on-secondary-fixed": "#003f43",
+              "on-surface-variant": "#acaab5",
+              "on-secondary-fixed-variant": "#005e64",
+              "error": "#ff6e84",
+              "primary": "#df8eff",
+              "surface": "#0d0d15",
+              "on-primary-fixed-variant": "#4b0068",
+              "on-secondary-container": "#e3fdff"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .grid-bg {
+            background-image: linear-gradient(to right, rgba(72, 71, 81, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(72, 71, 81, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .neon-glow-text {
+            text-shadow: 0 0 20px rgba(223, 142, 255, 0.3);
+        }
+        .glass-panel {
+            background: rgba(43, 43, 56, 0.6);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0d0d15]/80 backdrop-blur-xl border-b border-[#df8eff]/10 shadow-[0_0_20px_rgba(223,142,255,0.06)]">
+<div class="flex justify-between items-center px-8 h-16 max-w-7xl mx-auto">
+<div class="text-xl font-black text-[#df8eff] tracking-widest font-['Space_Grotesk'] uppercase">DEV_PORTFOLIO</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#f2effb]/70 hover:text-[#df8eff] transition-colors font-['Space_Grotesk'] tracking-tighter font-bold uppercase" href="#">Work</a>
+<a class="text-[#f2effb]/70 hover:text-[#df8eff] transition-colors font-['Space_Grotesk'] tracking-tighter font-bold uppercase" href="#">GitHub</a>
+<a class="text-[#00eefc] border-b-2 border-[#00eefc] pb-1 font-['Space_Grotesk'] tracking-tighter font-bold uppercase" href="#">Contact</a>
+<a class="text-[#f2effb]/70 hover:text-[#df8eff] transition-colors font-['Space_Grotesk'] tracking-tighter font-bold uppercase" href="#">LinkedIn</a>
+<button class="material-symbols-outlined text-[#df8eff] hover:bg-[#df8eff]/5 transition-all duration-300 p-2 rounded-full">terminal</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="min-h-screen pt-32 pb-24 grid-bg relative overflow-hidden">
+<!-- Background Light Leaks -->
+<div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<!-- Header Section -->
+<div class="mb-16 md:mb-24 max-w-2xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_#00eefc]"></span>
+<span class="text-secondary font-label text-[10px] tracking-[0.2em] uppercase font-bold">Available for new opportunities</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter text-on-surface neon-glow-text mb-6">
+                    Get in <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Touch</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-lg leading-relaxed">
+                    Building the future of the web, one pixel at a time. Reach out for collaborations, project inquiries, or just to talk tech.
+                </p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Contact Form Card -->
+<div class="lg:col-span-7 bg-surface-container rounded-xl p-8 md:p-12 relative overflow-hidden border-t-2 border-transparent hover:border-tertiary transition-all duration-500 group shadow-[0_0_30px_rgba(223,142,255,0.03)]">
+<form class="space-y-8 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant font-bold">Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-4 text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition-all placeholder:text-outline/30 font-headline" placeholder="ALEX RIVERA" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant font-bold">Email</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-4 text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition-all placeholder:text-outline/30 font-headline" placeholder="ALEX@STATION.COM" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant font-bold">Message</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-lg px-4 py-4 text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition-all placeholder:text-outline/30 font-headline resize-none" placeholder="TELL ME ABOUT YOUR PROJECT..." rows="5"></textarea>
+</div>
+<button class="w-full md:w-auto px-12 py-4 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest rounded-lg hover:scale-[0.98] active:scale-95 transition-all shadow-[0_4px_20px_rgba(223,142,255,0.2)] flex items-center justify-center gap-3" type="submit">
+                            Transmit Message
+                            <span class="material-symbols-outlined text-sm">send</span>
+</button>
+</form>
+<!-- Decorative Element -->
+<div class="absolute top-0 right-0 p-8 opacity-5 select-none pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">alternate_email</span>
+</div>
+</div>
+<!-- Social Hub Sidebar -->
+<div class="lg:col-span-5 space-y-8">
+<!-- GitHub Link Card -->
+<a class="block bg-surface-container rounded-xl p-8 group hover:bg-surface-container-high transition-all duration-300 border-l-4 border-secondary/20 hover:border-secondary" href="#">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-secondary text-4xl">terminal</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-2 tracking-tight">GitHub</h3>
+<p class="text-on-surface-variant font-body text-sm leading-relaxed mb-4">
+                            Explore my open-source contributions, repositories, and technical experiments.
+                        </p>
+<div class="flex gap-3">
+<span class="px-3 py-1 bg-surface-container-highest rounded text-[10px] font-bold tracking-widest uppercase text-secondary">Typescript</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded text-[10px] font-bold tracking-widest uppercase text-secondary">Rust</span>
+</div>
+</a>
+<!-- LinkedIn Link Card -->
+<a class="block bg-surface-container rounded-xl p-8 group hover:bg-surface-container-high transition-all duration-300 border-l-4 border-primary/20 hover:border-primary" href="#">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-primary text-4xl">badge</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-2 tracking-tight">LinkedIn</h3>
+<p class="text-on-surface-variant font-body text-sm leading-relaxed mb-4">
+                            Professional network, career milestones, and enterprise project history.
+                        </p>
+<div class="flex items-center gap-2">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-primary/20 border border-background flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px]">person</span>
+</div>
+<div class="w-6 h-6 rounded-full bg-secondary/20 border border-background flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px]">group</span>
+</div>
+</div>
+<span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">500+ Connections</span>
+</div>
+</a>
+<!-- Quick Info -->
+<div class="bg-surface-container-lowest/50 border border-outline-variant/10 rounded-xl p-6 flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary">location_on</span>
+<span class="text-sm font-label uppercase tracking-widest text-on-surface/80">Remote / Berlin, DE</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary">schedule</span>
+<span class="text-sm font-label uppercase tracking-widest text-on-surface/80">09:00 — 18:00 UTC+1</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-[#484751]/10 bg-[#0d0d15]">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<span class="font-['Inter'] text-[10px] tracking-[0.2em] uppercase text-[#f2effb]/50">
+                © 2024 DIGITAL ARCHITECT. ALL RIGHTS RESERVED.
+            </span>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-[10px] tracking-[0.2em] uppercase text-[#f2effb]/40 hover:text-[#00eefc] transition-colors" href="#">GitHub</a>
+<a class="font-['Inter'] text-[10px] tracking-[0.2em] uppercase text-[#f2effb]/40 hover:text-[#00eefc] transition-colors" href="#">LinkedIn</a>
+<a class="font-['Inter'] text-[10px] tracking-[0.2em] uppercase text-[#f2effb]/40 hover:text-[#00eefc] transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+</body></html>
