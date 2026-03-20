@@ -1,11 +1,14 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/livewire-starter-kit",
+    "name": "giantsoup/webportfolio",
     "type": "project",
-    "description": "The official Laravel starter kit for Livewire.",
+    "description": "Personal portfolio and project showcase built with Laravel, Livewire, Flux UI, and Tailwind CSS.",
     "keywords": [
         "laravel",
-        "framework"
+        "livewire",
+        "flux-ui",
+        "portfolio",
+        "tailwindcss"
     ],
     "license": "MIT",
     "require": {
