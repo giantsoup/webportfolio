@@ -15,7 +15,7 @@ This application combines a public-facing portfolio with a private admin area fo
 
 ## Stack
 
-- PHP 8.4
+- PHP 8.5
 - Laravel 13
 - Livewire 4
 - Flux UI 2
@@ -23,6 +23,8 @@ This application combines a public-facing portfolio with a private admin area fo
 - Pest for automated testing
 
 ## Local Setup
+
+This repository is pinned to PHP 8.5. If you use Laravel Herd or Valet, the included `.valetrc` requests PHP 8.5 for the project.
 
 Flux UI is a paid package. Before your first `composer install`, make sure your machine has valid Flux Composer credentials configured.
 
