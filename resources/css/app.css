@@ -10,6 +10,9 @@
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-headline: 'Space Grotesk', var(--font-sans);
+    --font-body: 'Inter', var(--font-sans);
+    --font-label: 'Inter', var(--font-sans);
 
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
@@ -26,6 +29,18 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
+    --color-portfolio-surface: #0d0d15;
+    --color-portfolio-surface-low: #13131c;
+    --color-portfolio-surface-card: #191923;
+    --color-portfolio-surface-high: #252531;
+    --color-portfolio-surface-bright: #2b2b38;
+    --color-portfolio-outline: #484751;
+    --color-portfolio-copy: #f2effb;
+    --color-portfolio-copy-muted: #acaab5;
+    --color-portfolio-primary: #df8eff;
+    --color-portfolio-secondary: #00eefc;
+    --color-portfolio-tertiary: #ff6e81;
 }
 
 @layer theme {
@@ -64,3 +79,55 @@ select:focus[data-flux-control] {
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */
+
+@layer base {
+    body {
+        font-family: var(--font-body);
+    }
+}
+
+@layer utilities {
+    .font-headline {
+        font-family: var(--font-headline);
+    }
+
+    .font-body {
+        font-family: var(--font-body);
+    }
+
+    .font-label {
+        font-family: var(--font-label);
+    }
+
+    .portfolio-grid {
+        background-image:
+            linear-gradient(to right, rgb(72 71 81 / 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgb(72 71 81 / 0.08) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+
+    .portfolio-panel {
+        @apply rounded-3xl border border-portfolio-outline/20 bg-portfolio-surface-card/90 backdrop-blur-sm;
+        box-shadow: 0 0 30px rgb(223 142 255 / 0.08);
+    }
+
+    .portfolio-text-gradient {
+        @apply bg-linear-to-r from-portfolio-primary to-portfolio-secondary bg-clip-text text-transparent;
+    }
+
+    .portfolio-button-primary {
+        @apply inline-flex items-center justify-center rounded-xl bg-portfolio-primary px-5 py-3 font-headline text-sm font-semibold uppercase tracking-[0.18em] text-black transition hover:scale-[0.99] hover:shadow-[0_0_30px_rgba(223,142,255,0.18)];
+    }
+
+    .portfolio-button-secondary {
+        @apply inline-flex items-center justify-center rounded-xl border border-portfolio-secondary/40 px-5 py-3 font-headline text-sm font-semibold uppercase tracking-[0.18em] text-portfolio-secondary transition hover:bg-portfolio-secondary/10;
+    }
+
+    .portfolio-glow-primary {
+        box-shadow: 0 0 120px rgb(223 142 255 / 0.12);
+    }
+
+    .portfolio-glow-secondary {
+        box-shadow: 0 0 120px rgb(0 238 252 / 0.12);
+    }
+}

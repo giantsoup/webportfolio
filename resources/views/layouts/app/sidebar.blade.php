@@ -15,18 +15,30 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
+                    <flux:sidebar.item :href="route('admin.projects.index')" :current="request()->routeIs('admin.projects.*')" wire:navigate>
+                        {{ __('Projects') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item :href="route('admin.skills.index')" :current="request()->routeIs('admin.skills.*')" wire:navigate>
+                        {{ __('Skills') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item :href="route('admin.inquiries.index')" :current="request()->routeIs('admin.inquiries.*')" wire:navigate>
+                        {{ __('Inquiries') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item :href="route('admin.settings.edit')" :current="request()->routeIs('admin.settings.edit')" wire:navigate>
+                        {{ __('Portfolio') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
             <flux:spacer />
 
             <flux:sidebar.nav>
-                <flux:sidebar.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                    {{ __('Repository') }}
+                <flux:sidebar.item icon="folder-git-2" :href="route('home')" target="_blank">
+                    {{ __('Public Site') }}
                 </flux:sidebar.item>
 
                 <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                    {{ __('Documentation') }}
+                    {{ __('Starter Docs') }}
                 </flux:sidebar.item>
             </flux:sidebar.nav>
 
