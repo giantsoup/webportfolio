@@ -10,6 +10,6 @@
         <p class="mt-1 font-label text-[10px] uppercase tracking-[0.22em] text-portfolio-copy-muted">{{ $skill->category }}</p>
     </div>
     @if (filled($skill->icon))
-        <x-dynamic-component :component="'heroicon-o-' . $skill->icon" class="size-8 text-portfolio-copy-muted/40" />
+        @svg('heroicon-o-' . $skill->icon, 'size-8 text-portfolio-copy-muted/40')
     @endif
 </article>

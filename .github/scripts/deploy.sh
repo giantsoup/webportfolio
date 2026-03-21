@@ -67,6 +67,7 @@ cd "${release_dir}"
 "${COMPOSER_BIN}" install --no-dev --prefer-dist --no-interaction --optimize-autoloader
 "${PHP_BIN}" artisan migrate --force
 "${PHP_BIN}" artisan optimize:clear
+"${PHP_BIN}" artisan icons:cache
 "${PHP_BIN}" artisan optimize
 "${PHP_BIN}" artisan storage:link || true
 
