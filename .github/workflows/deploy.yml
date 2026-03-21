@@ -59,6 +59,11 @@ jobs:
       - name: Build Assets
         run: npm run build
 
+      - name: Verify Built Assets
+        run: |
+          test ! -f public/hot
+          test -f public/build/manifest.json
+
       - name: Run Tests
         run: php artisan test --compact
 

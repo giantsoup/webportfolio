@@ -35,6 +35,13 @@ fi
 mkdir -p "${release_dir}"
 tar -xzf "${RELEASE_ARCHIVE}" -C "${release_dir}"
 
+rm -f "${release_dir}/public/hot"
+
+if [[ ! -f "${release_dir}/public/build/manifest.json" ]]; then
+    echo "Missing Vite manifest at ${release_dir}/public/build/manifest.json" >&2
+    exit 1
+fi
+
 mkdir -p "${release_dir}/storage/app"
 mkdir -p "${release_dir}/storage/framework/cache"
 mkdir -p "${release_dir}/storage/framework/sessions"
@@ -53,6 +60,7 @@ chmod ug+rwx \
     "${release_dir}/storage/framework/sessions" \
     "${release_dir}/storage/framework/views" \
     "${release_dir}/bootstrap/cache"
+chmod -R a+rX "${release_dir}/public/build"
 
 cd "${release_dir}"
 
