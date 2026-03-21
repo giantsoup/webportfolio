@@ -1,12 +1,12 @@
 <x-layouts::public :title="__('Contact')" :$settings>
     <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
         <div class="max-w-3xl space-y-6">
-            <x-public.status-pulse text="Available for new opportunities" />
+            <x-public.status-pulse :text="$settings->hero_kicker" />
             <h1 class="font-headline text-5xl font-bold tracking-tight text-portfolio-copy md:text-7xl">
                 Get in <span class="portfolio-text-gradient">Touch</span>
             </h1>
             <p class="text-lg leading-8 text-portfolio-copy-muted">
-                Reach out for collaborations, project inquiries, legacy modernization work, or technical consulting.
+                Reach out for relevant introductions, product conversations, or thoughtful professional inquiries.
             </p>
         </div>
 
@@ -65,7 +65,7 @@
                 @endif
 
                 @if (filled($settings->linkedin_url))
-                    <x-public.social-card :href="$settings->linkedin_url" label="LinkedIn" description="Professional history, project context, and current availability." />
+                    <x-public.social-card :href="$settings->linkedin_url" label="LinkedIn" description="Professional history, project context, and current role details." />
                 @endif
 
                 <div class="rounded-3xl border border-portfolio-outline/20 bg-black/30 p-6">

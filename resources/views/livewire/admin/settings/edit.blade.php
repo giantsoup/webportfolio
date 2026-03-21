@@ -24,7 +24,7 @@
             </label>
 
             <div class="grid gap-4 md:grid-cols-2">
-                <flux:input wire:model="availability_text" :label="__('Availability text')" required />
+                <flux:input wire:model="availability_text" :label="__('Current focus text')" required />
                 <flux:input wire:model="location_label" :label="__('Location label')" />
             </div>
 

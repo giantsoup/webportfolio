@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('portfolio_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('hero_kicker')->default('Available for projects');
+            $table->string('hero_kicker')->default('Focused on long-term product systems');
             $table->string('hero_title')->default('Architecting');
             $table->string('hero_emphasis')->default('Scalable');
             $table->text('hero_summary');
-            $table->string('availability_text');
+            $table->string('availability_text')->default('Laravel architecture, operational software, and durable internal tools.');
             $table->unsignedSmallInteger('years_experience')->default(10);
             $table->unsignedInteger('projects_completed')->default(40);
             $table->string('location_label')->nullable();

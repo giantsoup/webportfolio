@@ -11,24 +11,24 @@
         ];
 
         $platformBuildHighlights = [
-            'Designed and refined compliance workflows across report periods, unit compliance, certifications, requirement reviews, status transitions, and internal review.',
-            'Implemented program-specific business logic that translated regulatory requirements into forms, calculations, reporting outputs, and operational software behavior.',
-            'Built reporting, document, and communications tooling spanning exports, PDFs, attachments, upload and recovery flows, eblasts, postal workflows, and notice planning.',
-            'Owned waitlist systems, data imports, and normalization for projects, contacts, units, HIMS records, and rent and income limits while resolving legacy inconsistencies.',
+            'Design and refine compliance workflows across report periods, unit compliance, certifications, requirement reviews, status transitions, and internal review.',
+            'Implement program-specific business logic that translates regulatory requirements into forms, calculations, reporting outputs, and operational software behavior.',
+            'Build reporting, document, and communications tooling spanning exports, PDFs, attachments, upload and recovery flows, eblasts, postal workflows, and notice planning.',
+            'Own waitlist systems, data imports, and normalization for projects, contacts, units, HIMS records, and rent and income limits while resolving legacy inconsistencies.',
         ];
 
         $platformImprovementHighlights = [
-            'Refactored services and controllers to improve maintainability and support long-term growth.',
-            'Expanded automated coverage with unit, feature, integration, and regression tests around critical workflows.',
-            'Strengthened validation, permissions, error handling, and resilience across high-risk business processes.',
-            'Improved queue-backed processing, deployment workflows, CI and CD behavior, and performance in large-data and document-heavy areas.',
+            'Refactor services and controllers to improve maintainability and support long-term growth.',
+            'Expand automated coverage with unit, feature, integration, and regression tests around critical workflows.',
+            'Strengthen validation, permissions, error handling, and resilience across high-risk business processes.',
+            'Improve queue-backed processing, deployment workflows, CI and CD behavior, and performance in large-data and document-heavy areas.',
         ];
 
         $platformCallouts = [
-            'Sole in-house developer for a multi-year Laravel housing compliance platform',
-            'Owned compliance workflows, reporting, documents, waitlists, and communications',
-            'Supported complex affordable housing program logic across multiple agencies',
-            'Led modernization through refactoring, testing, queueing, deployment, and operational improvements',
+            'Serve as the sole in-house developer for a long-running Laravel housing compliance platform',
+            'Own compliance workflows, reporting, documents, waitlists, and communications',
+            'Support complex affordable housing program logic across multiple agencies',
+            'Lead modernization through refactoring, testing, queueing, deployment, and operational improvements',
         ];
     @endphp
 
@@ -57,7 +57,7 @@
         <div class="grid gap-4 md:grid-cols-2">
             <div class="portfolio-panel md:col-span-2">
                 <div class="rounded-[calc(1.5rem-1px)] bg-portfolio-surface-low p-6">
-                    <p class="font-label text-[10px] uppercase tracking-[0.22em] text-portfolio-copy-muted">Availability</p>
+                    <p class="font-label text-[10px] uppercase tracking-[0.22em] text-portfolio-copy-muted">Current Focus</p>
                     <p class="mt-4 font-headline text-3xl font-bold text-portfolio-copy">{{ $settings->availability_text }}</p>
                     @if ($featuredSkills->take(3)->isNotEmpty())
                         <div class="mt-6 flex flex-wrap gap-2">
@@ -91,21 +91,21 @@
         </div>
     </section>
 
-    <x-public.section title="Housing Compliance Platform" eyebrow="Featured Engagement" intro="For the past five years, I have been the sole in-house developer responsible for the continued growth, maintenance, and modernization of a Laravel-based affordable housing compliance platform used for reporting, occupancy workflows, documents, waitlists, and stakeholder communication." class="py-20">
+    <x-public.section title="Housing Compliance Platform" eyebrow="Featured Engagement" intro="Since 2020, I have served as the sole in-house developer responsible for the continued growth, maintenance, and modernization of a Laravel-based affordable housing compliance platform used for reporting, occupancy workflows, documents, waitlists, and stakeholder communication." class="py-20">
         <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <div class="portfolio-panel p-8">
                 <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-secondary">Project Title</p>
                 <h3 class="mt-4 font-headline text-3xl font-bold text-portfolio-copy md:text-4xl">Housing Compliance Platform</h3>
                 <p class="mt-3 text-sm uppercase tracking-[0.18em] text-portfolio-copy-muted">Sole In-House Developer, 2020 to Present</p>
                 <p class="mt-6 max-w-3xl text-base leading-8 text-portfolio-copy-muted">
-                    I owned the long-term technical direction and day-to-day engineering execution for a business-critical internal system with only minimal contractor support, functioning as the lead engineer, maintainer, and primary technical decision-maker.
+                    I lead the long-term technical direction and day-to-day engineering execution for a business-critical internal system with only minimal contractor support, functioning as the lead engineer, maintainer, and primary technical decision-maker.
                 </p>
             </div>
 
             <div class="portfolio-panel p-8">
                 <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-primary">Program Coverage</p>
                 <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
-                    The platform had to support evolving operational and regulatory requirements while remaining reliable for internal staff and compatible with legacy data and older workflows.
+                    The platform must support evolving operational and regulatory requirements while remaining reliable for internal staff and compatible with legacy data and older workflows.
                 </p>
                 <div class="mt-6 flex flex-wrap gap-2">
                     @foreach ($compliancePrograms as $program)
@@ -119,14 +119,14 @@
             <div class="portfolio-panel p-8">
                 <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-tertiary">The Challenge</p>
                 <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
-                    This was not just a feature-delivery problem. The system had to accurately reflect changing business rules, support multiple affordable housing programs, stay usable for internal teams, absorb legacy data, and continue operating as the platform grew in complexity.
+                    This is not just a feature-delivery problem. The system must accurately reflect changing business rules, support multiple affordable housing programs, stay usable for internal teams, absorb legacy data, and continue operating as the platform grows in complexity.
                 </p>
             </div>
 
             <div class="portfolio-panel p-8">
                 <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-secondary">My Role</p>
                 <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
-                    I worked across the full stack on backend architecture, workflow design, reporting, document handling, queue-based processing, testing, deployment support, and ongoing production maintenance over a sustained multi-year lifecycle.
+                    I work across the full stack on backend architecture, workflow design, reporting, document handling, queue-based processing, testing, deployment support, and ongoing production maintenance over a sustained multi-year lifecycle.
                 </p>
             </div>
         </div>
@@ -158,7 +158,7 @@
                 <div class="portfolio-panel p-8">
                     <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-tertiary">Outcome</p>
                     <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
-                        Over five years, I helped turn the platform into a more capable, stable, and maintainable system that supported deeper housing-program requirements and more reliable daily operations for staff who depend on it.
+                        Over the course of this engagement, I continue to make the platform more capable, stable, and maintainable so it can support deeper housing-program requirements and more reliable daily operations for the staff who depend on it.
                     </p>
                 </div>
             </div>

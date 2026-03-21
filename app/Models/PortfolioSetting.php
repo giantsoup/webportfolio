@@ -34,11 +34,11 @@ class PortfolioSetting extends Model
     public static function defaults(): array
     {
         return [
-            'hero_kicker' => 'Available for projects',
+            'hero_kicker' => 'Focused on long-term product systems',
             'hero_title' => 'Architecting',
             'hero_emphasis' => 'Scalable',
             'hero_summary' => 'Senior Full Stack Developer specializing in high-performance Laravel, PHP, and cloud-backed product delivery.',
-            'availability_text' => 'Available for custom architecture projects and legacy modernization.',
+            'availability_text' => 'Laravel architecture, operational software, and durable internal tools.',
             'years_experience' => 10,
             'projects_completed' => 40,
             'location_label' => 'Remote / Los Angeles, CA',
