@@ -44,7 +44,11 @@ ln -sfn "${shared_dir}/storage" "${release_dir}/storage"
 ln -sfn "${shared_dir}/.env" "${release_dir}/.env"
 
 mkdir -p "${release_dir}/bootstrap/cache"
-chmod -R ug+rwX "${shared_dir}/storage" "${shared_dir}/bootstrap/cache" "${release_dir}/bootstrap/cache"
+chmod -R ug+rwX \
+    "${shared_dir}/storage/app" \
+    "${shared_dir}/storage/framework" \
+    "${shared_dir}/bootstrap/cache" \
+    "${release_dir}/bootstrap/cache"
 
 cd "${release_dir}"
 
