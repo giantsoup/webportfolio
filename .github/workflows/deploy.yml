@@ -64,6 +64,8 @@ jobs:
 
       - name: Package Release Artifact
         run: |
+          archive_path="${RUNNER_TEMP}/webportfolio-release.tar.gz"
+
           tar \
             --exclude=.git \
             --exclude=.github \
@@ -71,14 +73,14 @@ jobs:
             --exclude=node_modules \
             --exclude=tests \
             --exclude=vendor \
-            --exclude=webportfolio-release.tar.gz \
-            -czf webportfolio-release.tar.gz .
+            -czf "${archive_path}" \
+            -C "${GITHUB_WORKSPACE}" .
 
       - name: Upload Release Artifact
         uses: actions/upload-artifact@v6
         with:
           name: webportfolio-release
-          path: webportfolio-release.tar.gz
+          path: ${{ runner.temp }}/webportfolio-release.tar.gz
           if-no-files-found: error
           retention-days: 7
 
