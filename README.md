@@ -34,6 +34,7 @@ composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate --seed
+php85 artisan app:make-admin
 npm install
 npm run build
 ```
@@ -46,12 +47,15 @@ composer run dev
 
 That starts the Laravel server, queue listener, log tailing, and Vite dev server in one command.
 
-## Seeded Admin Login
+## Admin Login Bootstrap
 
-Local development seeding creates an admin account:
+Create or promote an admin account with the bootstrap command:
 
-- Email: `test@example.com`
-- Password: `password`
+```bash
+php85 artisan app:make-admin
+```
+
+Pass `--unverified --send-verification` if you want the first admin to complete the normal email verification flow instead of being marked verified immediately.
 
 ## Contact Workflow Notes
 
