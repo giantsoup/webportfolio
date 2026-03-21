@@ -30,10 +30,14 @@ test('public portfolio pages render published content', function () {
         ->assertSee('Laravel architecture, operational software, and durable internal tools.')
         ->assertSee('Housing Compliance Platform')
         ->assertSee('Since 2020, I have served as the sole in-house developer')
-        ->assertSee('Sole In-House Developer, 2020 to Present')
-        ->assertSee('I lead the long-term technical direction and day-to-day engineering execution')
-        ->assertSee('This is not just a feature-delivery problem.')
+        ->assertSee('Sole In-House Developer, 2020')
+        ->assertSee('I own the long-term technical direction and daily engineering execution')
+        ->assertSee('More than feature delivery.')
         ->assertSee('CDLAC')
+        ->assertSee('Core systems I delivered')
+        ->assertSee('Compliance workflows')
+        ->assertSee('Modernization efforts')
+        ->assertSee('Architecture cleanup')
         ->assertSee('Telemetry Hub')
         ->assertDontSee('Hidden Draft');
 

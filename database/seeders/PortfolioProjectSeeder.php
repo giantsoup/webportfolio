@@ -106,22 +106,22 @@ class PortfolioProjectSeeder extends Seeder
 
         $skillIdsBySlug = Skill::query()
             ->whereIn('slug', [
-                'laravel-application-architecture',
-                'testing-regression-coverage-and-release-hardening',
+                'laravel',
+                'automated-testing',
             ])
             ->pluck('id', 'slug');
 
         $projectSkillMap = [
             'arbor-xml-viewer' => [
-                'testing-regression-coverage-and-release-hardening',
+                'automated-testing',
             ],
             'trench-crusade-campaign-tracker' => [
-                'laravel-application-architecture',
-                'testing-regression-coverage-and-release-hardening',
+                'laravel',
+                'automated-testing',
             ],
             'gametracker' => [
-                'laravel-application-architecture',
-                'testing-regression-coverage-and-release-hardening',
+                'laravel',
+                'automated-testing',
             ],
         ];
 

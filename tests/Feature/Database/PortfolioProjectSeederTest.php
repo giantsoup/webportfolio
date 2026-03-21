@@ -40,7 +40,7 @@ test('portfolio project seeder creates curated github-backed projects without du
     expect(
         Project::query()->whereSlug('gametracker')->firstOrFail()->skills->pluck('slug')->all()
     )->toBe([
-        'laravel-application-architecture',
-        'testing-regression-coverage-and-release-hardening',
+        'laravel',
+        'automated-testing',
     ]);
 });

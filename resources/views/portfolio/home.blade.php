@@ -11,25 +11,43 @@
         ];
 
         $platformBuildHighlights = [
-            'Design and refine compliance workflows across report periods, unit compliance, certifications, requirement reviews, status transitions, and internal review.',
-            'Implement program-specific business logic that translates regulatory requirements into forms, calculations, reporting outputs, and operational software behavior.',
-            'Build reporting, document, and communications tooling spanning exports, PDFs, attachments, upload and recovery flows, eblasts, postal workflows, and notice planning.',
-            'Own waitlist systems, data imports, and normalization for projects, contacts, units, HIMS records, and rent and income limits while resolving legacy inconsistencies.',
+            [
+                'title' => 'Compliance workflows',
+                'summary' => 'Built multi-step workflows for report periods, certifications, status transitions, and internal review cycles.',
+            ],
+            [
+                'title' => 'Program-specific logic',
+                'summary' => 'Translated regulatory rules into working forms, calculations, and reporting outputs across multiple housing programs.',
+            ],
+            [
+                'title' => 'Reporting and documents',
+                'summary' => 'Created export pipelines, PDF generation, email blasts, postal workflows, and document management tooling.',
+            ],
+            [
+                'title' => 'Data operations',
+                'summary' => 'Managed waitlists, imports, and data normalization across projects, contacts, units, and rent and income limits.',
+            ],
         ];
 
         $platformImprovementHighlights = [
-            'Refactor services and controllers to improve maintainability and support long-term growth.',
-            'Expand automated coverage with unit, feature, integration, and regression tests around critical workflows.',
-            'Strengthen validation, permissions, error handling, and resilience across high-risk business processes.',
-            'Improve queue-backed processing, deployment workflows, CI and CD behavior, and performance in large-data and document-heavy areas.',
+            [
+                'title' => 'Architecture cleanup',
+                'summary' => 'Refactored services and controllers to reduce complexity and support long-term growth.',
+            ],
+            [
+                'title' => 'Automated testing',
+                'summary' => 'Expanded test coverage with unit, feature, integration, and regression suites for critical paths.',
+            ],
+            [
+                'title' => 'Validation and resilience',
+                'summary' => 'Hardened validation, permissions, and error handling across high-risk business processes.',
+            ],
+            [
+                'title' => 'Operations and performance',
+                'summary' => 'Optimized queue processing, CI/CD pipelines, and performance for large datasets and document generation.',
+            ],
         ];
 
-        $platformCallouts = [
-            'Serve as the sole in-house developer for a long-running Laravel housing compliance platform',
-            'Own compliance workflows, reporting, documents, waitlists, and communications',
-            'Support complex affordable housing program logic across multiple agencies',
-            'Lead modernization through refactoring, testing, queueing, deployment, and operational improvements',
-        ];
     @endphp
 
     <section class="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.3fr_0.9fr] lg:px-8">
@@ -91,95 +109,132 @@
         </div>
     </section>
 
-    <x-public.section title="Housing Compliance Platform" eyebrow="Featured Engagement" intro="Since 2020, I have served as the sole in-house developer responsible for the continued growth, maintenance, and modernization of a Laravel-based affordable housing compliance platform used for reporting, occupancy workflows, documents, waitlists, and stakeholder communication." class="py-20">
-        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <div class="portfolio-panel p-8">
-                <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-secondary">Project Title</p>
-                <h3 class="mt-4 font-headline text-3xl font-bold text-portfolio-copy md:text-4xl">Housing Compliance Platform</h3>
-                <p class="mt-3 text-sm uppercase tracking-[0.18em] text-portfolio-copy-muted">Sole In-House Developer, 2020 to Present</p>
-                <p class="mt-6 max-w-3xl text-base leading-8 text-portfolio-copy-muted">
-                    I lead the long-term technical direction and day-to-day engineering execution for a business-critical internal system with only minimal contractor support, functioning as the lead engineer, maintainer, and primary technical decision-maker.
-                </p>
-            </div>
+    <x-public.section title="Housing Compliance Platform" eyebrow="Current Work" intro="Since 2020, I have served as the sole in-house developer responsible for the continued growth, maintenance, and modernization of a Laravel-based affordable housing compliance platform used for reporting, occupancy workflows, documents, waitlists, and stakeholder communication." class="py-20">
+        <div class="portfolio-panel p-8">
+            <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+                <div>
+                    <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-secondary">The Project</p>
+                    <h3 class="mt-4 font-headline text-3xl font-bold text-portfolio-copy md:text-4xl">Housing Compliance Platform</h3>
+                    <p class="mt-3 text-sm uppercase tracking-[0.18em] text-portfolio-copy-muted">Sole In-House Developer, 2020 &ndash; Present</p>
+                    <p class="mt-6 max-w-3xl text-base leading-8 text-portfolio-copy-muted">
+                        I own the long-term technical direction and daily engineering execution for a business-critical Laravel platform, serving as the lead engineer, maintainer, and primary technical decision-maker.
+                    </p>
+                </div>
 
-            <div class="portfolio-panel p-8">
-                <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-primary">Program Coverage</p>
-                <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
-                    The platform must support evolving operational and regulatory requirements while remaining reliable for internal staff and compatible with legacy data and older workflows.
-                </p>
-                <div class="mt-6 flex flex-wrap gap-2">
-                    @foreach ($compliancePrograms as $program)
-                        <span class="rounded-full border border-portfolio-outline/20 bg-black/30 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-portfolio-copy-muted">
-                            {{ $program }}
-                        </span>
-                    @endforeach
+                <div>
+                    <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-primary">Program Coverage</p>
+                    <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
+                        The platform supports evolving regulatory and operational requirements across multiple affordable housing programs while staying reliable for internal teams.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        @foreach ($compliancePrograms as $program)
+                            <span class="rounded-full bg-portfolio-surface-low px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-portfolio-copy-muted">
+                                {{ $program }}
+                            </span>
+                        @endforeach
+                    </div>
                 </div>
             </div>
+        </div>
 
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
             <div class="portfolio-panel p-8">
                 <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-tertiary">The Challenge</p>
                 <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
-                    This is not just a feature-delivery problem. The system must accurately reflect changing business rules, support multiple affordable housing programs, stay usable for internal teams, absorb legacy data, and continue operating as the platform grows in complexity.
+                    More than feature delivery. The system must reflect changing business rules, support multiple housing programs, absorb legacy data, and remain usable as complexity grows.
                 </p>
             </div>
 
             <div class="portfolio-panel p-8">
                 <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-secondary">My Role</p>
                 <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
-                    I work across the full stack on backend architecture, workflow design, reporting, document handling, queue-based processing, testing, deployment support, and ongoing production maintenance over a sustained multi-year lifecycle.
+                    Full-stack ownership across backend architecture, workflow design, reporting, document handling, queue processing, testing, deployments, and production maintenance.
                 </p>
             </div>
         </div>
 
-        <div class="mt-6 grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+        <div class="mt-6 grid gap-6 xl:grid-cols-2">
             <div class="portfolio-panel p-8">
-                <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-primary">What I Built</p>
-                <ul class="mt-6 space-y-4 text-sm leading-7 text-portfolio-copy-muted">
+                <div class="flex flex-wrap items-start justify-between gap-4 pb-8">
+                    <div class="max-w-2xl">
+                        <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-primary">What I Built</p>
+                        <h3 class="mt-3 font-headline text-2xl font-bold text-portfolio-copy sm:text-3xl">Core systems I delivered</h3>
+                        <p class="mt-3 text-sm leading-7 text-portfolio-copy-muted">
+                            Key areas of ownership spanning the full platform lifecycle.
+                        </p>
+                    </div>
+                    <span class="rounded-full bg-portfolio-primary/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-portfolio-primary">
+                        4 delivery areas
+                    </span>
+                </div>
+                <ul class="grid gap-1 text-sm leading-7 text-portfolio-copy-muted sm:grid-cols-2">
                     @foreach ($platformBuildHighlights as $highlight)
-                        <li class="rounded-2xl border border-portfolio-outline/10 bg-black/20 px-4 py-4">
-                            {{ $highlight }}
+                        <li class="rounded-2xl bg-portfolio-surface-low p-5 transition duration-300 hover:-translate-y-0.5 hover:bg-portfolio-surface-high">
+                            <p class="font-label text-[10px] font-semibold uppercase tracking-[0.2em] text-portfolio-primary">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</p>
+                            <h4 class="mt-3 font-headline text-lg font-semibold leading-6 text-portfolio-copy">{{ $highlight['title'] }}</h4>
+                            <p class="mt-2 text-sm leading-7 text-portfolio-copy-muted">{{ $highlight['summary'] }}</p>
                         </li>
                     @endforeach
                 </ul>
             </div>
 
-            <div class="space-y-6">
-                <div class="portfolio-panel p-8">
-                    <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-secondary">How I Improved the System</p>
-                    <ul class="mt-6 space-y-4 text-sm leading-7 text-portfolio-copy-muted">
-                        @foreach ($platformImprovementHighlights as $highlight)
-                            <li class="rounded-2xl border border-portfolio-outline/10 bg-black/20 px-4 py-4">
-                                {{ $highlight }}
-                            </li>
-                        @endforeach
-                    </ul>
+            <div class="portfolio-panel p-8">
+                <div class="flex flex-wrap items-start justify-between gap-4 pb-8">
+                    <div class="max-w-xl">
+                        <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-secondary">How I Improved It</p>
+                        <h3 class="mt-3 font-headline text-2xl font-bold text-portfolio-copy">Modernization efforts</h3>
+                        <p class="mt-3 text-sm leading-7 text-portfolio-copy-muted">
+                            Ongoing work to make the platform safer to operate, easier to extend, and less fragile over time.
+                        </p>
+                    </div>
+                    <span class="rounded-full bg-portfolio-secondary/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-portfolio-secondary">
+                        4 upgrade themes
+                    </span>
                 </div>
-
-                <div class="portfolio-panel p-8">
-                    <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-tertiary">Outcome</p>
-                    <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
-                        Over the course of this engagement, I continue to make the platform more capable, stable, and maintainable so it can support deeper housing-program requirements and more reliable daily operations for the staff who depend on it.
-                    </p>
-                </div>
+                <ul class="grid gap-1 text-sm leading-7 text-portfolio-copy-muted sm:grid-cols-2">
+                    @foreach ($platformImprovementHighlights as $highlight)
+                        <li class="rounded-2xl bg-portfolio-surface-low p-5 transition duration-300 hover:-translate-y-0.5 hover:bg-portfolio-surface-high">
+                            <p class="font-label text-[10px] font-semibold uppercase tracking-[0.2em] text-portfolio-secondary">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</p>
+                            <h4 class="mt-3 font-headline text-lg font-semibold leading-6 text-portfolio-copy">{{ $highlight['title'] }}</h4>
+                            <p class="mt-2 text-sm leading-7 text-portfolio-copy-muted">{{ $highlight['summary'] }}</p>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
 
-        <div class="mt-6 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="mt-6 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <div class="portfolio-panel p-8">
-                <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-primary">Short Callout Version</p>
-                <ul class="mt-6 space-y-3 text-sm leading-7 text-portfolio-copy-muted">
-                    @foreach ($platformCallouts as $callout)
-                        <li class="rounded-2xl border border-portfolio-outline/10 bg-black/20 px-4 py-3">
-                            {{ $callout }}
-                        </li>
-                    @endforeach
+                <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-tertiary">Outcome</p>
+                <h3 class="mt-3 font-headline text-2xl font-bold text-portfolio-copy">Sustained impact over time</h3>
+                <p class="mt-4 text-base leading-8 text-portfolio-copy-muted">
+                    Through continuous iteration, the platform has become more capable, stable, and maintainable year over year, supporting deeper program requirements and more reliable daily operations.
+                </p>
+                <ul class="mt-6 grid gap-1 sm:grid-cols-2">
+                    <li class="rounded-2xl bg-portfolio-surface-low p-5 transition duration-300 hover:-translate-y-0.5 hover:bg-portfolio-surface-high">
+                        <p class="font-headline text-2xl font-bold text-portfolio-tertiary">5+</p>
+                        <p class="mt-1 text-sm leading-7 text-portfolio-copy-muted">Years of continuous development on a single production codebase</p>
+                    </li>
+                    <li class="rounded-2xl bg-portfolio-surface-low p-5 transition duration-300 hover:-translate-y-0.5 hover:bg-portfolio-surface-high">
+                        <p class="font-headline text-2xl font-bold text-portfolio-tertiary">Solo</p>
+                        <p class="mt-1 text-sm leading-7 text-portfolio-copy-muted">Primary engineer responsible for architecture, delivery, and maintenance</p>
+                    </li>
+                    <li class="rounded-2xl bg-portfolio-surface-low p-5 transition duration-300 hover:-translate-y-0.5 hover:bg-portfolio-surface-high">
+                        <p class="font-headline text-2xl font-bold text-portfolio-tertiary">Stable</p>
+                        <p class="mt-1 text-sm leading-7 text-portfolio-copy-muted">Reduced production incidents through testing, validation, and hardened deployments</p>
+                    </li>
+                    <li class="rounded-2xl bg-portfolio-surface-low p-5 transition duration-300 hover:-translate-y-0.5 hover:bg-portfolio-surface-high">
+                        <p class="font-headline text-2xl font-bold text-portfolio-tertiary">Modern</p>
+                        <p class="mt-1 text-sm leading-7 text-portfolio-copy-muted">Migrated legacy patterns to current Laravel conventions, queues, and CI/CD</p>
+                    </li>
                 </ul>
             </div>
 
             <div class="portfolio-panel p-8">
                 <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-secondary">Delivery Stack</p>
+                <h3 class="mt-3 font-headline text-2xl font-bold text-portfolio-copy">Tools behind the work</h3>
                 @if ($featuredSkills->isNotEmpty())
-                    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                    <div class="mt-6 grid gap-1 sm:grid-cols-2">
                         @foreach ($featuredSkills as $skill)
                             <x-public.skill-tile :skill="$skill" />
                         @endforeach
@@ -193,7 +248,7 @@
         </div>
     </x-public.section>
 
-    <x-public.section title="Selected Artifacts" eyebrow="More Work" intro="Additional builds, migrations, and systems work alongside long-term platform ownership." class="py-20">
+    <x-public.section title="Projects" eyebrow="Portfolio" intro="Builds, migrations, and technical work that demonstrate the depth and range of my engineering experience." class="py-20">
         <x-slot:actions>
             <a href="{{ route('projects.index') }}" class="portfolio-button-secondary">Browse All</a>
         </x-slot:actions>

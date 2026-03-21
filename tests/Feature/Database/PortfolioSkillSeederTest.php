@@ -7,33 +7,35 @@ test('portfolio skill seeder creates curated examples without duplicates', funct
     $this->seed(PortfolioSkillSeeder::class);
     $this->seed(PortfolioSkillSeeder::class);
 
-    expect(Skill::query()->count())->toBe(8);
-    expect(Skill::query()->where('is_featured', true)->count())->toBe(4);
+    expect(Skill::query()->count())->toBe(10);
+    expect(Skill::query()->where('is_featured', true)->count())->toBe(6);
     expect(
         Skill::query()
             ->orderBy('sort_order')
             ->pluck('slug')
             ->all()
     )->toBe([
-        'laravel-application-architecture',
-        'affordable-housing-compliance-workflows',
-        'regulatory-reporting-and-exports',
-        'document-management-and-notice-delivery',
-        'waitlist-and-eligibility-systems',
-        'legacy-data-imports-and-normalization',
-        'queue-backed-processing-and-horizon-operations',
-        'testing-regression-coverage-and-release-hardening',
+        'laravel',
+        'livewire',
+        'mysql',
+        'tailwind-css',
+        'queue-systems',
+        'automated-testing',
+        'ci-cd-pipelines',
+        'pdf-generation',
+        'data-normalization',
+        'api-integrations',
     ]);
 
     $this->assertDatabaseHas('skills', [
-        'slug' => 'affordable-housing-compliance-workflows',
-        'category' => 'Domain Systems',
+        'slug' => 'laravel',
+        'category' => 'Framework',
         'is_featured' => true,
     ]);
 
     $this->assertDatabaseHas('skills', [
-        'slug' => 'testing-regression-coverage-and-release-hardening',
-        'category' => 'Quality',
+        'slug' => 'api-integrations',
+        'category' => 'Backend',
         'is_featured' => false,
     ]);
 });
