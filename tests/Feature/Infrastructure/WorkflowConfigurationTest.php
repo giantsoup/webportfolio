@@ -10,11 +10,14 @@ test('workflow php versions stay aligned with composer requirements', function (
     expect($composer['require']['php'])->toBe('^8.5');
 
     expect(file_get_contents(base_path('.github/workflows/tests.yml')))
-        ->toContain("php-version: '8.5'");
+        ->toContain("php-version: '8.5'")
+        ->not->toContain('composer.fluxui.dev');
 
     expect(file_get_contents(base_path('.github/workflows/lint.yml')))
-        ->toContain("php-version: '8.5'");
+        ->toContain("php-version: '8.5'")
+        ->not->toContain('composer.fluxui.dev');
 
     expect(file_get_contents(base_path('.github/workflows/deploy.yml')))
-        ->toContain("php-version: '8.5'");
+        ->toContain("php-version: '8.5'")
+        ->not->toContain('composer.fluxui.dev');
 });
