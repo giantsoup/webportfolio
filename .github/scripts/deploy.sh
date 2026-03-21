@@ -25,11 +25,7 @@ trap cleanup_failed_release ERR
 
 mkdir -p "${DEPLOY_PATH}/releases"
 mkdir -p "${shared_dir}/storage/app/public"
-mkdir -p "${shared_dir}/storage/framework/cache"
-mkdir -p "${shared_dir}/storage/framework/sessions"
-mkdir -p "${shared_dir}/storage/framework/views"
 mkdir -p "${shared_dir}/storage/logs"
-mkdir -p "${shared_dir}/bootstrap/cache"
 
 if [[ ! -f "${shared_dir}/.env" ]]; then
     echo "Missing shared environment file at ${shared_dir}/.env" >&2
@@ -39,18 +35,24 @@ fi
 mkdir -p "${release_dir}"
 tar -xzf "${RELEASE_ARCHIVE}" -C "${release_dir}"
 
-rm -rf "${release_dir}/storage"
-ln -sfn "${shared_dir}/storage" "${release_dir}/storage"
+mkdir -p "${release_dir}/storage/app"
+mkdir -p "${release_dir}/storage/framework/cache"
+mkdir -p "${release_dir}/storage/framework/sessions"
+mkdir -p "${release_dir}/storage/framework/views"
+rm -rf "${release_dir}/storage/app/public"
+rm -rf "${release_dir}/storage/logs"
+ln -sfn "${shared_dir}/storage/app/public" "${release_dir}/storage/app/public"
+ln -sfn "${shared_dir}/storage/logs" "${release_dir}/storage/logs"
 ln -sfn "${shared_dir}/.env" "${release_dir}/.env"
 
 mkdir -p "${release_dir}/bootstrap/cache"
-find \
-    "${shared_dir}/storage/app" \
-    "${shared_dir}/storage/framework" \
-    "${shared_dir}/bootstrap/cache" \
-    "${release_dir}/bootstrap/cache" \
-    -type d \
-    -exec chmod ug+rwx {} +
+chmod ug+rwx \
+    "${shared_dir}/storage/app/public" \
+    "${shared_dir}/storage/logs" \
+    "${release_dir}/storage/framework/cache" \
+    "${release_dir}/storage/framework/sessions" \
+    "${release_dir}/storage/framework/views" \
+    "${release_dir}/bootstrap/cache"
 
 cd "${release_dir}"
 
@@ -67,7 +69,11 @@ cd "${current_dir}"
 "${PHP_BIN}" artisan reload || "${PHP_BIN}" artisan queue:restart
 "${PHP_BIN}" artisan schedule:interrupt || true
 
-mapfile -t releases < <(find "${DEPLOY_PATH}/releases" -mindepth 1 -maxdepth 1 -type d | sort)
+releases=()
+
+while IFS= read -r old_release; do
+    releases+=("${old_release}")
+done < <(find "${DEPLOY_PATH}/releases" -mindepth 1 -maxdepth 1 -type d | sort)
 
 if (( ${#releases[@]} > KEEP_RELEASES )); then
     for old_release in "${releases[@]:0:${#releases[@]}-KEEP_RELEASES}"; do
