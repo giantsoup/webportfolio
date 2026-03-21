@@ -11,8 +11,18 @@
         <div class="relative z-10">
             <header class="sticky top-0 z-40 border-b border-portfolio-outline/20 bg-portfolio-surface/80 backdrop-blur-xl">
                 <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-                    <a href="{{ route('home') }}" class="font-headline text-lg font-bold uppercase tracking-[0.24em] text-portfolio-primary">
-                        Taylor Portfolio
+                    <a href="{{ route('home') }}" class="inline-flex items-center gap-3" aria-label="Taylor Portfolio">
+                        <img
+                            src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo.png') }}"
+                            alt=""
+                            aria-hidden="true"
+                            width="250"
+                            height="245"
+                            class="h-11 w-auto shrink-0 rounded-2xl object-contain"
+                        />
+                        <span class="font-headline text-base font-bold uppercase tracking-[0.24em] text-portfolio-primary sm:text-lg">
+                            Taylor Portfolio
+                        </span>
                     </a>
 
                     <nav class="hidden items-center gap-6 font-headline text-sm font-semibold uppercase tracking-[0.16em] md:flex">

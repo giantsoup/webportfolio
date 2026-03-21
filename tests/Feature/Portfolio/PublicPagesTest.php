@@ -3,6 +3,7 @@
 use App\Models\PortfolioSetting;
 use App\Models\Project;
 use App\Models\Skill;
+use Illuminate\Support\Facades\Vite;
 
 test('public portfolio pages render published content', function () {
     PortfolioSetting::factory()->create();
@@ -19,6 +20,12 @@ test('public portfolio pages render published content', function () {
 
     $this->get(route('home'))
         ->assertOk()
+        ->assertSee(Vite::asset('resources/images/logo.png'), false)
+        ->assertSee('href="/favicon.ico"', false)
+        ->assertSee('href="/favicon-32x32.png"', false)
+        ->assertSee('href="/favicon-16x16.png"', false)
+        ->assertSee('href="/apple-touch-icon.png"', false)
+        ->assertDontSee('href="/favicon.svg"', false)
         ->assertSee('Housing Compliance Platform')
         ->assertSee('Sole In-House Developer, 2020 to Present')
         ->assertSee('CDLAC')
