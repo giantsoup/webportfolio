@@ -66,5 +66,8 @@ test('deploy script prepares Laravel runtime directories and clears stale bootst
     expect($deployScript)
         ->toContain('mkdir -p "${release_dir}/storage/framework/cache/data"')
         ->toContain('rm -f "${release_dir}/bootstrap/cache/"*.php')
+        ->toContain('chgrp -R www-data')
+        ->toContain('find "${release_dir}/storage" -type d -exec chmod g+s {} \;')
+        ->toContain('find "${release_dir}/bootstrap/cache" -type d -exec chmod g+s {} \;')
         ->toContain('"${release_dir}/storage/framework/cache/data"');
 });

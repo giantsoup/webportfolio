@@ -55,14 +55,21 @@ ln -sfn "${shared_dir}/.env" "${release_dir}/.env"
 
 mkdir -p "${release_dir}/bootstrap/cache"
 rm -f "${release_dir}/bootstrap/cache/"*.php
+chgrp -R www-data \
+    "${release_dir}/storage" \
+    "${release_dir}/bootstrap/cache"
 chmod ug+rwx \
     "${shared_dir}/storage/app/public" \
     "${shared_dir}/storage/logs" \
+    "${release_dir}/storage" \
+    "${release_dir}/storage/framework" \
     "${release_dir}/storage/framework/cache" \
     "${release_dir}/storage/framework/cache/data" \
     "${release_dir}/storage/framework/sessions" \
     "${release_dir}/storage/framework/views" \
     "${release_dir}/bootstrap/cache"
+find "${release_dir}/storage" -type d -exec chmod g+s {} \;
+find "${release_dir}/bootstrap/cache" -type d -exec chmod g+s {} \;
 chmod -R a+rX "${release_dir}/public/build"
 
 cd "${release_dir}"
