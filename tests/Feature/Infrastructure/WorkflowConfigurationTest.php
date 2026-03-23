@@ -20,6 +20,26 @@ test('workflow php versions stay aligned with composer requirements', function (
     }
 });
 
+test('node tooling stays aligned to the Node 24 LTS line', function () {
+    $package = json_decode(
+        file_get_contents(base_path('package.json')),
+        true,
+        flags: JSON_THROW_ON_ERROR,
+    );
+
+    expect(trim(file_get_contents(base_path('.nvmrc'))))->toBe('24');
+    expect(trim(file_get_contents(base_path('.node-version'))))->toBe('24');
+    expect($package['engines']['node'])->toBe('>=24 <25');
+
+    foreach ([
+        '.github/workflows/tests.yml',
+        '.github/workflows/deploy.yml',
+    ] as $workflow) {
+        expect(file_get_contents(base_path($workflow)))
+            ->toContain("node-version: '24'");
+    }
+});
+
 test('repository excludes server bootstrap artifacts and ignores generated runtime artifacts', function () {
     foreach ([
         'scripts/bootstrap_linode_server.sh',
