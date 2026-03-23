@@ -12,17 +12,22 @@ test('portfolio project seeder creates curated github-backed projects without du
 
     $this->seed(PortfolioProjectSeeder::class);
 
-    expect(Project::query()->count())->toBe(4);
+    expect(Project::query()->count())->toBe(3);
     expect(
         Project::query()
             ->ordered()
             ->pluck('slug')
             ->all()
     )->toBe([
+        'print-for-me',
         'arbor-xml-viewer',
         'dbgold',
-        'trench-crusade-campaign-tracker',
-        'gametracker',
+    ]);
+
+    $this->assertDatabaseHas('projects', [
+        'slug' => 'print-for-me',
+        'repo_url' => 'https://github.com/giantsoup/print-for-me',
+        'is_featured' => true,
     ]);
 
     $this->assertDatabaseHas('projects', [
@@ -38,9 +43,18 @@ test('portfolio project seeder creates curated github-backed projects without du
     ]);
 
     expect(
-        Project::query()->whereSlug('gametracker')->firstOrFail()->skills->pluck('slug')->all()
+        Project::query()->whereSlug('print-for-me')->firstOrFail()->skills->pluck('slug')->all()
     )->toBe([
         'laravel',
+        'tailwind-css',
         'automated-testing',
+    ]);
+
+    $this->assertDatabaseMissing('projects', [
+        'slug' => 'trench-crusade-campaign-tracker',
+    ]);
+
+    $this->assertDatabaseMissing('projects', [
+        'slug' => 'gametracker',
     ]);
 });

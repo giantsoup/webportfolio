@@ -1,27 +1,26 @@
 <?php
 
-namespace Database\Seeders;
+use Carbon\CarbonImmutable;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
-use App\Models\Project;
-use App\Models\Skill;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Carbon;
-
-class PortfolioProjectSeeder extends Seeder
+return new class extends Migration
 {
     /**
-     * Run the database seeds.
+     * Run the migrations.
      */
-    public function run(): void
+    public function up(): void
     {
         $obsoleteProjectSlugs = [
             'trench-crusade-campaign-tracker',
             'gametracker',
         ];
 
-        Project::query()->whereIn('slug', $obsoleteProjectSlugs)->delete();
+        $timestamp = now();
 
-        $projects = [
+        DB::table('projects')->whereIn('slug', $obsoleteProjectSlugs)->delete();
+
+        DB::table('projects')->upsert([
             [
                 'title' => 'Print for Me',
                 'slug' => 'print-for-me',
@@ -38,7 +37,9 @@ class PortfolioProjectSeeder extends Seeder
                 'is_featured' => true,
                 'is_published' => true,
                 'sort_order' => 10,
-                'published_at' => Carbon::parse('2026-03-23'),
+                'published_at' => CarbonImmutable::parse('2026-03-23'),
+                'created_at' => $timestamp,
+                'updated_at' => $timestamp,
             ],
             [
                 'title' => 'Arbor XML Viewer',
@@ -56,7 +57,9 @@ class PortfolioProjectSeeder extends Seeder
                 'is_featured' => true,
                 'is_published' => true,
                 'sort_order' => 20,
-                'published_at' => Carbon::parse('2026-03-22'),
+                'published_at' => CarbonImmutable::parse('2026-03-22'),
+                'created_at' => $timestamp,
+                'updated_at' => $timestamp,
             ],
             [
                 'title' => 'dbgold',
@@ -74,11 +77,11 @@ class PortfolioProjectSeeder extends Seeder
                 'is_featured' => true,
                 'is_published' => true,
                 'sort_order' => 30,
-                'published_at' => Carbon::parse('2026-03-21'),
+                'published_at' => CarbonImmutable::parse('2026-03-21'),
+                'created_at' => $timestamp,
+                'updated_at' => $timestamp,
             ],
-        ];
-
-        Project::query()->upsert($projects, uniqueBy: ['slug'], update: [
+        ], uniqueBy: ['slug'], update: [
             'title',
             'summary',
             'body',
@@ -92,15 +95,6 @@ class PortfolioProjectSeeder extends Seeder
             'published_at',
             'updated_at',
         ]);
-
-        $skillIdsBySlug = Skill::query()
-            ->whereIn('slug', [
-                'laravel',
-                'mysql',
-                'tailwind-css',
-                'automated-testing',
-            ])
-            ->pluck('id', 'slug');
 
         $projectSkillMap = [
             'print-for-me' => [
@@ -118,17 +112,75 @@ class PortfolioProjectSeeder extends Seeder
             ],
         ];
 
-        Project::query()
+        $projectIdsBySlug = DB::table('projects')
             ->whereIn('slug', array_keys($projectSkillMap))
-            ->get()
-            ->each(function (Project $project) use ($projectSkillMap, $skillIdsBySlug): void {
-                $skillIds = collect($projectSkillMap[$project->slug] ?? [])
-                    ->map(fn (string $skillSlug): ?int => $skillIdsBySlug[$skillSlug] ?? null)
-                    ->filter()
-                    ->values()
-                    ->all();
+            ->pluck('id', 'slug');
 
-                $project->skills()->sync($skillIds);
-            });
+        if ($projectIdsBySlug->isEmpty()) {
+            return;
+        }
+
+        $skillIdsBySlug = DB::table('skills')
+            ->whereIn('slug', [
+                'laravel',
+                'mysql',
+                'tailwind-css',
+                'automated-testing',
+            ])
+            ->pluck('id', 'slug');
+
+        DB::table('project_skill')
+            ->whereIn('project_id', $projectIdsBySlug->values()->all())
+            ->delete();
+
+        $projectSkills = [];
+
+        foreach ($projectSkillMap as $projectSlug => $skillSlugs) {
+            $projectId = $projectIdsBySlug[$projectSlug] ?? null;
+
+            if (! $projectId) {
+                continue;
+            }
+
+            foreach ($skillSlugs as $skillSlug) {
+                $skillId = $skillIdsBySlug[$skillSlug] ?? null;
+
+                if (! $skillId) {
+                    continue;
+                }
+
+                $projectSkills[] = [
+                    'project_id' => $projectId,
+                    'skill_id' => $skillId,
+                ];
+            }
+        }
+
+        if ($projectSkills !== []) {
+            DB::table('project_skill')->insert($projectSkills);
+        }
     }
-}
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        $currentProjectSlugs = [
+            'print-for-me',
+            'arbor-xml-viewer',
+            'dbgold',
+        ];
+
+        $projectIds = DB::table('projects')
+            ->whereIn('slug', $currentProjectSlugs)
+            ->pluck('id')
+            ->all();
+
+        if ($projectIds !== []) {
+            DB::table('project_skill')->whereIn('project_id', $projectIds)->delete();
+        }
+
+        DB::table('projects')->whereIn('slug', $currentProjectSlugs)->delete();
+    }
+};
