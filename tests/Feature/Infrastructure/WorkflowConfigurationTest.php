@@ -59,3 +59,12 @@ test('repository excludes server bootstrap artifacts and ignores generated runti
         ->toContain('/storage/framework/views/*')
         ->toContain('/storage/logs/*.log');
 });
+
+test('deploy script prepares Laravel runtime directories and clears stale bootstrap cache files', function () {
+    $deployScript = file_get_contents(base_path('.github/scripts/deploy.sh'));
+
+    expect($deployScript)
+        ->toContain('mkdir -p "${release_dir}/storage/framework/cache/data"')
+        ->toContain('rm -f "${release_dir}/bootstrap/cache/"*.php')
+        ->toContain('"${release_dir}/storage/framework/cache/data"');
+});

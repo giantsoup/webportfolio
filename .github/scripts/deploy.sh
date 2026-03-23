@@ -44,6 +44,7 @@ fi
 
 mkdir -p "${release_dir}/storage/app"
 mkdir -p "${release_dir}/storage/framework/cache"
+mkdir -p "${release_dir}/storage/framework/cache/data"
 mkdir -p "${release_dir}/storage/framework/sessions"
 mkdir -p "${release_dir}/storage/framework/views"
 rm -rf "${release_dir}/storage/app/public"
@@ -53,10 +54,12 @@ ln -sfn "${shared_dir}/storage/logs" "${release_dir}/storage/logs"
 ln -sfn "${shared_dir}/.env" "${release_dir}/.env"
 
 mkdir -p "${release_dir}/bootstrap/cache"
+rm -f "${release_dir}/bootstrap/cache/"*.php
 chmod ug+rwx \
     "${shared_dir}/storage/app/public" \
     "${shared_dir}/storage/logs" \
     "${release_dir}/storage/framework/cache" \
+    "${release_dir}/storage/framework/cache/data" \
     "${release_dir}/storage/framework/sessions" \
     "${release_dir}/storage/framework/views" \
     "${release_dir}/bootstrap/cache"
