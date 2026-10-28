@@ -20,23 +20,31 @@ test('workflow php versions stay aligned with composer requirements', function (
     }
 });
 
-test('node tooling stays aligned to the Node 24 LTS line', function () {
+test('node and npm tooling stay aligned across local development and CI', function () {
     $package = json_decode(
         file_get_contents(base_path('package.json')),
         true,
         flags: JSON_THROW_ON_ERROR,
     );
 
-    expect(trim(file_get_contents(base_path('.nvmrc'))))->toBe('24');
-    expect(trim(file_get_contents(base_path('.node-version'))))->toBe('24');
-    expect($package['engines']['node'])->toBe('>=24 <25');
+    expect(trim(file_get_contents(base_path('.nvmrc'))))->toBe('26.13.0');
+    expect(trim(file_get_contents(base_path('.node-version'))))->toBe('26.13.0');
+    expect($package['engines']['node'])->toBe('>=26 <27');
+    expect($package['engines']['npm'])->toBe('^12.2.1');
+    expect($package['packageManager'])->toBe('npm@12.2.1');
+
+    expect(file_get_contents(base_path('README.md')))
+        ->toContain('| Node.js | 26.13.0')
+        ->toContain('| npm | 12.2.1');
 
     foreach ([
         '.github/workflows/tests.yml',
         '.github/workflows/deploy.yml',
     ] as $workflow) {
         expect(file_get_contents(base_path($workflow)))
-            ->toContain("node-version: '24'");
+            ->toContain("node-version-file: '.nvmrc'")
+            ->toContain('npm install --global '.$package['packageManager'])
+            ->not->toContain("node-version: '24'");
     }
 });
 
