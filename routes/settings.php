@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\EnsurePasswordIsConfirmed;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -17,7 +18,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
             when(
                 Features::canManageTwoFactorAuthentication()
                     && Features::optionEnabled(Features::twoFactorAuthentication(), 'confirmPassword'),
-                ['password.confirm'],
+                [EnsurePasswordIsConfirmed::class],
                 [],
             ),
         )
