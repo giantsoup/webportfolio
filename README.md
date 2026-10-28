@@ -22,6 +22,17 @@ This application combines a public-facing portfolio with a private admin area fo
 - Tailwind CSS 4
 - Pest for automated testing
 
+## Build Runtime
+
+| Tool | Version |
+| --- | --- |
+| Node.js | 26.13.0, selected by `.nvmrc` and `.node-version` |
+| npm | 12.2.1, recorded in `packageManager` |
+
+Run `nvm use` before installing frontend dependencies. Confirm `node --version` and `npm --version` match these versions. If the selected Node installation still uses its bundled npm, run `npm install --global npm@12.2.1` within that selected Node version. Install the committed dependencies with `npm ci`.
+
+Herd selects the site's Node version from `.nvmrc`. Its managed Vite process uses this runtime; Herd continues to serve Laravel with PHP 8.5. The CI build jobs select the same Node and npm versions explicitly.
+
 ## Local Setup
 
 This repository is pinned to PHP 8.5. If you use Laravel Herd or Valet, the included `.valetrc` requests PHP 8.5 for the project.
