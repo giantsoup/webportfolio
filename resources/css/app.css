@@ -121,8 +121,12 @@ select:focus[data-flux-control] {
     @apply font-ui text-[11px] font-bold tracking-[0.16em] text-zinc-600 uppercase dark:text-zinc-400;
 }
 
+.admin :is(input, textarea, select)[data-flux-control] {
+    @apply bg-zinc-50 shadow-none dark:bg-zinc-950;
+}
+
 .admin :is(input, textarea, select)[data-flux-control]:not([data-invalid]) {
-    @apply border-zinc-200 bg-zinc-50 shadow-none dark:border-zinc-700 dark:bg-zinc-950;
+    @apply border-zinc-200 dark:border-zinc-700;
 }
 
 .admin :is(input, textarea, select)[data-flux-control]:not([data-invalid], :focus, :disabled):hover {

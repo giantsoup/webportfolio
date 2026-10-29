@@ -86,7 +86,7 @@ class MakeAdminUserCommand extends Command
         }
 
         $this->line('- After the first login, enable two-factor authentication in Settings > Security.');
-        $this->line('- If you ever need to rotate the password, use /forgot-password.');
+        $this->line("- To reset or rotate the password later, run php artisan app:make-admin {$admin->email} again.");
 
         return self::SUCCESS;
     }
