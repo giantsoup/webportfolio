@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\ProjectFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -42,6 +43,17 @@ class Project extends Model
             'is_published' => 'bool',
             'published_at' => 'datetime',
         ];
+    }
+
+    /**
+     * @return Attribute<list<string>, never>
+     */
+    protected function bodyParagraphs(): Attribute
+    {
+        return Attribute::get(fn (): array => array_values(array_filter(
+            preg_split('/\R{2,}/', trim((string) $this->body)),
+            fn (string $paragraph): bool => filled($paragraph),
+        )));
     }
 
     /**
