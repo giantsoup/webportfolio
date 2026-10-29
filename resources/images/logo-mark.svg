@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 40">
+    <title>Taylor Portfolio</title>
+    <path d="M12 0H64L52 40H0Z" fill="#ff3d6e"/>
+    <path d="M13 7H30L28.5 12H24.3L18 33H12.5L18.8 12H11.5Z" fill="#0b0b12"/>
+    <path fill="#0b0b12" fill-rule="evenodd" d="M40 7H53L45.2 33H32.2ZM43.5 12H48.5L43.7 28H38.7Z"/>
+    <path d="M37 3L27.6 37" stroke="#ff3d6e" stroke-width="3"/>
+</svg>

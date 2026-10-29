@@ -11,7 +11,9 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-headline: 'Space Grotesk', var(--font-sans);
-    --font-body: 'Inter', var(--font-sans);
+    --font-body: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Big Shoulders Display Variable', 'Arial Narrow', ui-sans-serif, sans-serif;
+    --font-ui: 'Oxanium Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
     --font-label: 'Inter', var(--font-sans);
 
     --color-zinc-50: #fafafa;
@@ -29,6 +31,15 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
+    --color-portfolio-signal: #ff3d6e;
+    --color-portfolio-signal-deep: #c2002f;
+    --color-portfolio-night: #0b0b12;
+    --color-portfolio-night-raised: #15151f;
+    --color-portfolio-night-line: #2a2a38;
+    --color-portfolio-bone: #eceae4;
+    --color-portfolio-bone-muted: #55545e;
+    --color-portfolio-fog: #a3a2af;
 
     --color-portfolio-surface: #0d0d15;
     --color-portfolio-surface-low: #13131c;
@@ -129,5 +140,61 @@ select:focus[data-flux-control] {
 
     .portfolio-glow-secondary {
         box-shadow: 0 0 120px rgb(0 238 252 / 0.12);
+    }
+}
+
+@utility portfolio-slant {
+    --slant: 4vw;
+    clip-path: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+}
+
+@utility portfolio-slant-top {
+    --slant: 4vw;
+    clip-path: polygon(0 var(--slant), 100% 0, 100% 100%, 0 100%);
+}
+
+
+@utility portfolio-para {
+    clip-path: polygon(0.75rem 0, 100% 0, calc(100% - 0.75rem) 100%, 0 100%);
+}
+
+
+@utility portfolio-vertical {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+
+@utility portfolio-text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--outline, var(--color-portfolio-signal));
+}
+
+
+@utility portfolio-text-outline-bone {
+    --outline: var(--color-portfolio-bone);
+}
+
+@layer base {
+    html:has(body.portfolio) {
+        scroll-behavior: smooth;
+    }
+
+    .portfolio :focus-visible {
+        outline: 2px solid var(--color-portfolio-signal);
+        outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html:has(body.portfolio) {
+            scroll-behavior: auto;
+        }
+
+        .portfolio *,
+        .portfolio ::before,
+        .portfolio ::after {
+            animation: none !important;
+            transition: none !important;
+        }
     }
 }
