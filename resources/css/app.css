@@ -198,3 +198,9 @@ select:focus[data-flux-control] {
         }
     }
 }
+
+@layer base {
+    .portfolio .portfolio-para:focus-visible {
+        outline-offset: -4px;
+    }
+}
