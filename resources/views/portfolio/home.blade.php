@@ -56,9 +56,9 @@
             <div class="mx-auto grid max-w-screen-2xl gap-10 px-4 pt-10 pb-20 sm:px-8 xl:min-h-[calc(100dvh-4.5rem)] xl:grid-cols-[auto_minmax(0,1fr)_18rem] xl:items-center xl:gap-12">
                 <p class="portfolio-vertical hidden font-ui text-[11px] font-bold tracking-[0.3em] text-portfolio-fog uppercase xl:block" aria-hidden="true">Taylor Portfolio &mdash; Senior Full Stack Developer &mdash; {{ $settings->location_label }}</p>
 
-                <div class="grid gap-8">
+                <div class="grid min-w-0 gap-8">
                     <p class="font-ui text-xs font-bold tracking-[0.24em] text-portfolio-signal uppercase">{{ $settings->hero_kicker }}</p>
-                    <h1 id="cover-title" class="font-display text-[clamp(3rem,8.5vw,10.5rem)] leading-[0.82] font-black break-words uppercase">
+                    <h1 id="cover-title" class="font-display text-[clamp(3rem,8.5vw,10.5rem)] leading-[0.82] min-w-0 font-black break-words wrap-anywhere uppercase">
                         <span class="relative z-10 block">{{ $settings->hero_title }}</span>
                         <span class="relative isolate block py-[0.06em] text-portfolio-night before:absolute before:-top-[0.1em] before:-bottom-[0.04em] before:-right-[100vw] before:-left-4 before:-z-10 before:origin-left before:-rotate-2 before:bg-portfolio-signal">{{ $settings->hero_emphasis }}</span>
                         <span class="relative z-10 block">Digital Systems.</span>
@@ -71,7 +71,7 @@
                     <ol class="grid gap-4">
                         <li><a href="#feature" class="group grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3"><span class="font-display text-3xl leading-none font-black text-portfolio-signal">02</span><span class="font-medium leading-snug group-hover:text-portfolio-signal">Cover story: five years, one codebase</span></a></li>
                         <li><a href="#built" class="group grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3"><span class="font-display text-3xl leading-none font-black text-portfolio-signal">03</span><span class="font-medium leading-snug group-hover:text-portfolio-signal">Built, then rebuilt better</span></a></li>
-                        <li><a href="#work" class="group grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3"><span class="font-display text-3xl leading-none font-black text-portfolio-signal">04</span><span class="font-medium leading-snug group-hover:text-portfolio-signal">Selected work</span></a></li>
+                        <li><a href="{{ $featuredProjects->isNotEmpty() ? '#work' : route('projects.index') }}" class="group grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3"><span class="font-display text-3xl leading-none font-black text-portfolio-signal">04</span><span class="font-medium leading-snug group-hover:text-portfolio-signal">Selected work</span></a></li>
                         <li><a href="{{ route('contact.create') }}" class="group grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3"><span class="font-display text-3xl leading-none font-black text-portfolio-signal">05</span><span class="font-medium leading-snug group-hover:text-portfolio-signal">Letters: get in touch</span></a></li>
                     </ol>
                     <dl class="grid grid-cols-2 content-start gap-3 border-t border-portfolio-night-line pt-5 md:border-t-0 md:pt-0 xl:border-t xl:pt-5">

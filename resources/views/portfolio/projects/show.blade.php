@@ -5,7 +5,7 @@
             <header class="mt-10 grid gap-6 border-b-4 border-portfolio-night pb-10 lg:grid-cols-[minmax(0,8fr)_minmax(0,4fr)] lg:items-end">
                 <div class="min-w-0">
                     <x-public.kicker tone="signal-deep">{{ $project->category }}</x-public.kicker>
-                    <h1 class="mt-4 font-display text-[clamp(3rem,9vw,8rem)] leading-[0.85] font-black break-words uppercase">{{ $project->title }}</h1>
+                    <h1 class="mt-4 font-display text-[clamp(3rem,9vw,8rem)] leading-[0.85] font-black break-words wrap-anywhere uppercase">{{ $project->title }}</h1>
                 </div>
                 <p class="text-xl leading-snug font-medium text-portfolio-bone-muted">{{ $project->summary }}</p>
             </header>
@@ -17,7 +17,7 @@
             @endif
 
             <div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,8fr)_minmax(0,4fr)]">
-                <div data-project-body class="min-w-0 space-y-6 text-lg leading-relaxed break-words">
+                <div data-project-body class="min-w-0 space-y-6 text-lg leading-relaxed break-words wrap-anywhere">
                     @foreach ($project->body_paragraphs as $paragraph)
                         <p @class(['first-letter:float-left first-letter:mt-1 first-letter:mr-3 first-letter:font-display first-letter:text-8xl first-letter:leading-[0.75] first-letter:font-black first-letter:text-portfolio-signal-deep' => $loop->first])>{{ $paragraph }}</p>
                     @endforeach

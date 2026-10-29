@@ -7,6 +7,7 @@
         </header>
 
         @if ($projects->isNotEmpty())
+            <h2 class="sr-only">Projects</h2>
             <ol class="mt-12 border-t border-portfolio-night-line" start="{{ $projects->firstItem() }}">
                 @foreach ($projects as $project)
                     <x-public.project-row :$project :index="$projects->firstItem() + $loop->index" />

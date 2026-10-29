@@ -5,7 +5,7 @@
         'portfolio-para inline-flex cursor-pointer items-center justify-center gap-2 px-6 py-3 font-ui text-sm font-bold tracking-[0.14em] uppercase transition-transform hover:translate-x-1',
         'bg-portfolio-signal text-portfolio-night' => $variant === 'signal',
         'bg-portfolio-bone text-portfolio-night' => $variant === 'bone',
-        'bg-portfolio-night text-portfolio-bone' => $variant === 'night',
+        'bg-portfolio-night text-portfolio-bone [--portfolio-control-focus:var(--color-portfolio-bone)]' => $variant === 'night',
     ];
 @endphp
 

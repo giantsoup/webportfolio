@@ -15,7 +15,7 @@
                         @if ($page === $paginator->currentPage())
                             <span aria-current="page" aria-label="Page {{ $page }}" class="portfolio-para bg-portfolio-signal px-4 py-2 text-portfolio-night">{{ $page }}</span>
                         @else
-                            <a href="{{ $url }}" aria-label="Go to page {{ $page }}" class="portfolio-para bg-portfolio-night-raised px-4 py-2 hover:bg-portfolio-bone hover:text-portfolio-night">{{ $page }}</a>
+                            <a href="{{ $url }}" aria-label="Go to page {{ $page }}" class="portfolio-para bg-portfolio-night-raised [--portfolio-control-focus:var(--color-portfolio-bone)] hover:[--portfolio-control-focus:var(--color-portfolio-night)] px-4 py-2 hover:bg-portfolio-bone hover:text-portfolio-night">{{ $page }}</a>
                         @endif
                     @endforeach
                 @endif

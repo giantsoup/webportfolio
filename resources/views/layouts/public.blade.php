@@ -28,7 +28,7 @@
                                 <a href="{{ route($route) }}" @if ($active) aria-current="page" @endif @class([
                                     'portfolio-para block px-4 py-2 transition-colors',
                                     'bg-portfolio-signal text-portfolio-night' => $active,
-                                    'bg-portfolio-night-raised hover:bg-portfolio-bone hover:text-portfolio-night' => ! $active,
+                                    'bg-portfolio-night-raised [--portfolio-control-focus:var(--color-portfolio-bone)] hover:bg-portfolio-bone hover:text-portfolio-night hover:[--portfolio-control-focus:var(--color-portfolio-night)]' => ! $active,
                                 ])>{{ $label }}</a>
                             </li>
                         @endforeach

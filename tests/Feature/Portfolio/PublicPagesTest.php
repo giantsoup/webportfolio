@@ -86,3 +86,17 @@ test('empty home hides the work and stack sections without admin instructions', 
         ->assertDontSee('Publish a few projects from the admin')
         ->assertDontSee('Add featured skills from the admin');
 });
+
+test('empty home contents links all point to available destinations', function () {
+    Project::query()->delete();
+    $response = $this->get(route('home'))->assertSuccessful();
+    $document = new DOMDocument;
+    @$document->loadHTML($response->getContent());
+    $xpath = new DOMXPath($document);
+
+    foreach ($xpath->query('//a[starts-with(@href, "#")]') as $link) {
+        $id = substr($link->getAttribute('href'), 1);
+        expect($xpath->query('//*[@id="'.$id.'"]'))->toHaveCount(1);
+    }
+    expect($xpath->query('//aside[@aria-labelledby="toc-title"]//a[@href="'.route('projects.index').'"]')->length)->toBeGreaterThan(0);
+});
