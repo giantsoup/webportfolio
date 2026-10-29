@@ -13,7 +13,6 @@
                     <x-public.logo-mark />
                     <span class="hidden font-display text-2xl leading-none font-black tracking-wide uppercase sm:block">Taylor Portfolio</span>
                 </a>
-                <p class="hidden font-ui text-[11px] font-bold tracking-[0.2em] text-portfolio-fog uppercase lg:block">Portfolio edition · {{ now()->year }}</p>
                 <nav aria-label="Primary">
                     <ul class="flex gap-1 font-ui text-xs font-bold tracking-[0.14em] uppercase">
                         @foreach (['home' => 'Home', 'projects.index' => 'Work', 'contact.create' => 'Contact'] as $route => $label)

@@ -54,3 +54,10 @@ test('public frame retires the neon overlays and public Livewire scripts', funct
         ->assertDontSee('backdrop-blur')
         ->assertDontSee('livewire/livewire.js', false);
 });
+
+test('the public header does not date the site while the footer keeps the copyright year', function () {
+    $this->get(route('home'))
+        ->assertSuccessful()
+        ->assertDontSee('Portfolio edition')
+        ->assertSee('© '.now()->year.' Taylor Portfolio', false);
+});
