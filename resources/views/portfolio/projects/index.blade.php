@@ -1,27 +1,21 @@
 <x-layouts::public :title="__('Work')" :$settings>
-    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div class="max-w-3xl space-y-6">
-            <p class="font-label text-[10px] font-semibold uppercase tracking-[0.22em] text-portfolio-primary">Architecture & Engineering</p>
-            <h1 class="font-headline text-5xl font-bold tracking-tight text-portfolio-copy md:text-7xl">
-                Selected <span class="portfolio-text-gradient">Artifacts</span>
-            </h1>
-            <p class="text-lg leading-8 text-portfolio-copy-muted">
-                A curated collection of Laravel systems, modernization work, APIs, and product delivery engagements.
-            </p>
-        </div>
+    <section aria-labelledby="work-title" class="mx-auto max-w-screen-2xl px-4 py-20 sm:px-8">
+        <header class="max-w-3xl">
+            <x-public.kicker>Selected artifacts</x-public.kicker>
+            <h1 id="work-title" class="mt-4 font-display text-[clamp(3.5rem,9vw,8rem)] leading-[0.85] font-black uppercase">The index</h1>
+            <p class="mt-6 text-lg leading-relaxed text-portfolio-fog">A curated collection of Laravel systems, modernization work, APIs, and product delivery engagements.</p>
+        </header>
 
-        <div class="mt-14 grid gap-6 lg:grid-cols-3">
-            @forelse ($projects as $project)
-                <x-public.project-card :project="$project" />
-            @empty
-                <div class="portfolio-panel p-8 text-portfolio-copy-muted lg:col-span-3">
-                    No published projects yet. Add one from the admin to populate the portfolio.
-                </div>
-            @endforelse
-        </div>
+        @if ($projects->isNotEmpty())
+            <ol class="mt-12 border-t border-portfolio-night-line" start="{{ $projects->firstItem() }}">
+                @foreach ($projects as $project)
+                    <x-public.project-row :$project :index="$projects->firstItem() + $loop->index" />
+                @endforeach
+            </ol>
+        @else
+            <p class="mt-12 border-t border-portfolio-night-line py-8 text-portfolio-fog">New work is being written up. Check back soon.</p>
+        @endif
 
-        <div class="mt-10">
-            {{ $projects->links() }}
-        </div>
+        {{ $projects->links('portfolio.partials.pagination') }}
     </section>
 </x-layouts::public>
