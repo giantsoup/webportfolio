@@ -59,3 +59,30 @@ test('public portfolio pages render published content', function () {
     $this->get(route('projects.show', $draftProject))
         ->assertNotFound();
 });
+
+test('home presents the cover story and links project rows to their details', function () {
+    $project = Project::factory()->featured()->create();
+
+    $this->get(route('home'))
+        ->assertSuccessful()
+        ->assertSeeText('Five years, one codebase.')
+        ->assertSeeText('Built, then rebuilt better.')
+        ->assertSeeText('The index')
+        ->assertSeeText('Write in.')
+        ->assertSee('id="feature"', false)
+        ->assertSee('id="built"', false)
+        ->assertSee('id="work"', false)
+        ->assertSee('href="'.route('projects.show', $project).'"', false);
+});
+
+test('empty home hides the work and stack sections without admin instructions', function () {
+    Project::query()->delete();
+    Skill::query()->delete();
+
+    $this->get(route('home'))
+        ->assertSuccessful()
+        ->assertDontSee('id="work"', false)
+        ->assertDontSee('id="stack-title"', false)
+        ->assertDontSee('Publish a few projects from the admin')
+        ->assertDontSee('Add featured skills from the admin');
+});
