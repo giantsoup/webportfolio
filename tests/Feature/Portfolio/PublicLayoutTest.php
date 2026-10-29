@@ -46,3 +46,11 @@ test('footer social links render only for filled settings', function (bool $hasL
 
     expect($xpath->query('//footer//a[@target="_blank" and @rel="noreferrer"]'))->toHaveCount($hasLinks ? 3 : 0);
 })->with([true, false]);
+
+test('public frame retires the neon overlays and public Livewire scripts', function () {
+    $this->get(route('home'))->assertSuccessful()
+        ->assertDontSee('portfolio-grid')
+        ->assertDontSee('portfolio-glow')
+        ->assertDontSee('backdrop-blur')
+        ->assertDontSee('livewire/livewire.js', false);
+});
