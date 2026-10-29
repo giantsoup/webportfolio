@@ -7,10 +7,13 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 #[Title('Projects')]
 class Index extends Component
 {
+    use WithPagination;
+
     /**
      * Delete a project.
      */

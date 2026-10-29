@@ -6,6 +6,7 @@ use App\Http\Controllers\ProjectController;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Inquiries\Index as InquiryIndex;
 use App\Livewire\Admin\Projects\Form as ProjectForm;
+use App\Livewire\Admin\Projects\Import as ProjectImport;
 use App\Livewire\Admin\Projects\Index as ProjectIndex;
 use App\Livewire\Admin\Settings\Edit as PortfolioSettingEdit;
 use App\Livewire\Admin\Skills\Form as SkillForm;
@@ -26,6 +27,7 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::prefix('dashboard')->name('admin.')->group(function (): void {
         Route::get('projects', ProjectIndex::class)->name('projects.index');
         Route::get('projects/create', ProjectForm::class)->name('projects.create');
+        Route::get('projects/import', ProjectImport::class)->name('projects.import');
         Route::get('projects/{project}/edit', ProjectForm::class)->name('projects.edit');
 
         Route::get('skills', SkillIndex::class)->name('skills.index');

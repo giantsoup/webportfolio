@@ -19,6 +19,7 @@ class Dashboard extends Component
             'publishedProjectCount' => Project::query()->published()->count(),
             'featuredSkillCount' => Skill::query()->where('is_featured', true)->count(),
             'newInquiryCount' => Inquiry::query()->where('status', 'new')->count(),
+            'recentInquiries' => Inquiry::query()->latestFirst()->limit(5)->get(),
         ])->layout('layouts.app');
     }
 }

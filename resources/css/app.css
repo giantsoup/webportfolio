@@ -47,6 +47,41 @@
         --color-accent-content: var(--color-white);
         --color-accent-foreground: var(--color-neutral-800);
     }
+
+    /*
+     * Admin back office: Flux reads the zinc scale and accent tokens, so retinting them here
+     * gives every admin, settings and Flux surface the portfolio's night neutrals and signal
+     * accent without touching the public pages or the auth screens.
+     */
+    .admin {
+        --color-zinc-50: #f7f7fa;
+        --color-zinc-100: #eeeef3;
+        --color-zinc-200: #dedde6;
+        --color-zinc-300: #c4c3ce;
+        --color-zinc-400: var(--color-portfolio-fog);
+        --color-zinc-500: #74737e;
+        --color-zinc-600: var(--color-portfolio-bone-muted);
+        --color-zinc-700: var(--color-portfolio-night-line);
+        --color-zinc-800: #1c1c28;
+        --color-zinc-900: var(--color-portfolio-night-raised);
+        --color-zinc-950: var(--color-portfolio-night);
+
+        --color-accent: var(--color-portfolio-signal-deep);
+        --color-accent-content: var(--color-portfolio-signal-deep);
+        --color-accent-foreground: var(--color-white);
+
+        --radius-sm: 0.125rem;
+        --radius-md: 0.1875rem;
+        --radius-lg: 0.25rem;
+        --radius-xl: 0.375rem;
+        --radius-2xl: 0.5rem;
+    }
+
+    .dark .admin {
+        --color-accent: var(--color-portfolio-signal);
+        --color-accent-content: var(--color-portfolio-signal);
+        --color-accent-foreground: var(--color-portfolio-night);
+    }
 }
 
 @layer base {
@@ -68,10 +103,38 @@
     @apply  !mb-0 !leading-tight;
 }
 
+.admin [data-flux-sidebar-item][data-current]::before {
+    @apply absolute inset-y-1.5 start-0 w-0.5 rounded-full bg-accent content-[''];
+}
+
 input:focus[data-flux-control],
 textarea:focus[data-flux-control],
 select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+/*
+ * Admin form fields sit inset on their panels with squared corners and a thin signal edge on focus.
+ * Invalid fields keep Flux's red border.
+ */
+.admin [data-flux-field]:not(:has([data-flux-switch], [data-flux-checkbox], [data-flux-radio])) > [data-flux-label] {
+    @apply font-ui text-[11px] font-bold tracking-[0.16em] text-zinc-600 uppercase dark:text-zinc-400;
+}
+
+.admin :is(input, textarea, select)[data-flux-control]:not([data-invalid]) {
+    @apply border-zinc-200 bg-zinc-50 shadow-none dark:border-zinc-700 dark:bg-zinc-950;
+}
+
+.admin :is(input, textarea, select)[data-flux-control]:not([data-invalid], :focus, :disabled):hover {
+    @apply border-zinc-300 dark:border-zinc-600;
+}
+
+.admin :is(input, textarea, select)[data-flux-control]:focus {
+    @apply ring-1 ring-accent ring-offset-0;
+}
+
+.admin :is(input, textarea, select)[data-flux-control]:not([data-invalid]):focus {
+    @apply border-accent;
 }
 
 /* \[:where(&)\]:size-4 {

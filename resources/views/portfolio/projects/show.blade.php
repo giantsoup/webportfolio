@@ -27,6 +27,24 @@
                     <h2 id="project-facts-title" class="font-ui text-xs font-bold tracking-[0.24em] text-portfolio-signal uppercase">Fact box</h2>
                     <dl class="mt-5 grid gap-6 border-t border-portfolio-night-line pt-5">
                         <x-public.fact label="Category">{{ $project->category }}</x-public.fact>
+                        @if ($project->github_synced_at)
+                            <x-public.fact label="On GitHub" data-project-github>
+                                <ul class="flex flex-wrap gap-x-4 gap-y-2 font-ui text-sm font-bold tracking-[0.06em] uppercase">
+                                    @if ($project->github_stars > 0)
+                                        <li>{{ number_format($project->github_stars) }} {{ str('star')->plural($project->github_stars) }}</li>
+                                    @endif
+                                    @if ($project->github_forks > 0)
+                                        <li>{{ number_format($project->github_forks) }} {{ str('fork')->plural($project->github_forks) }}</li>
+                                    @endif
+                                    @if (filled($project->github_language))
+                                        <li>{{ $project->github_language }}</li>
+                                    @endif
+                                    @if ($project->github_pushed_at)
+                                        <li class="text-portfolio-fog">Last push <time datetime="{{ $project->github_pushed_at->toDateString() }}">{{ $project->github_pushed_at->format('M Y') }}</time></li>
+                                    @endif
+                                </ul>
+                            </x-public.fact>
+                        @endif
                         @if ($project->skills->isNotEmpty())
                             <x-public.fact label="Stack">
                                 <ul class="flex flex-wrap gap-1.5 font-ui text-xs font-bold uppercase">

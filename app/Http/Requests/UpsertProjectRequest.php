@@ -46,6 +46,13 @@ class UpsertProjectRequest extends FormRequest
             'repo_url' => ['nullable', 'url', 'max:255'],
             'live_url' => ['nullable', 'url', 'max:255'],
             'case_study_url' => ['nullable', 'url', 'max:255'],
+            'github_repository' => [
+                'nullable',
+                'string',
+                'max:255',
+                'regex:/^[A-Za-z0-9-]+\/[A-Za-z0-9._-]+$/',
+                Rule::unique('projects', 'github_repository')->ignore($project),
+            ],
             'is_featured' => ['boolean'],
             'is_published' => ['boolean'],
             'sort_order' => ['required', 'integer', 'min:0'],

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 /*
@@ -47,4 +48,46 @@ expect()->extend('toBeOne', function () {
 function something()
 {
     // ..
+}
+
+/**
+ * Build a GitHub REST API repository payload for the configured test account.
+ *
+ * @param  array<string, mixed>  $overrides
+ * @return array<string, mixed>
+ */
+function githubRepositoryPayload(string $name, array $overrides = []): array
+{
+    return [
+        'full_name' => "giantsoup/{$name}",
+        'name' => $name,
+        'description' => "The {$name} repository.",
+        'html_url' => "https://github.com/giantsoup/{$name}",
+        'homepage' => null,
+        'language' => 'PHP',
+        'topics' => [],
+        'stargazers_count' => 3,
+        'forks_count' => 1,
+        'fork' => false,
+        'archived' => false,
+        'pushed_at' => '2026-10-01T12:00:00Z',
+        ...$overrides,
+    ];
+}
+
+/**
+ * Point the GitHub client at a test account and fake its repository listing, languages and README.
+ *
+ * @param  list<array<string, mixed>>  $repositories
+ * @param  array<string, int>  $languages
+ */
+function fakeGitHub(array $repositories, array $languages = ['PHP' => 1000], ?string $readme = null): void
+{
+    config(['services.github.username' => 'giantsoup', 'services.github.token' => 'test-token']);
+
+    Http::fake([
+        'api.github.com/users/giantsoup/repos*' => Http::response($repositories),
+        'api.github.com/repos/*/languages' => Http::response($languages),
+        'api.github.com/repos/*/readme' => $readme === null ? Http::response(['message' => 'Not Found'], 404) : Http::response($readme),
+    ]);
 }

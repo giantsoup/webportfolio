@@ -25,6 +25,13 @@ class Inquiry extends Model
     use HasFactory;
 
     /**
+     * The workflow statuses an inquiry can move through, in display order.
+     *
+     * @var list<string>
+     */
+    public const array STATUSES = ['new', 'reviewed', 'contacted', 'archived'];
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

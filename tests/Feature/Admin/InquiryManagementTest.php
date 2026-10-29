@@ -24,3 +24,15 @@ test('admin users can update inquiry status', function () {
 
     expect($inquiry->fresh()->contacted_at)->not->toBeNull();
 });
+
+test('inquiry statuses outside the workflow are rejected', function () {
+    $this->actingAs(User::factory()->create());
+
+    $inquiry = Inquiry::factory()->create(['status' => 'new']);
+
+    Livewire::test(Index::class)
+        ->call('markStatus', $inquiry, 'deleted')
+        ->assertHasErrors('status');
+
+    expect($inquiry->fresh()->status)->toBe('new');
+});

@@ -3,28 +3,28 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+    <body class="admin min-h-screen bg-zinc-50 text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
+        <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.header>
                 <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate />
                 <flux:sidebar.collapse class="lg:hidden" />
             </flux:sidebar.header>
 
             <flux:sidebar.nav>
-                <flux:sidebar.group :heading="__('Platform')" class="grid">
-                    <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                <flux:sidebar.group :heading="__('Manage')" class="grid">
+                    <flux:sidebar.item icon="squares-2x2" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item :href="route('admin.projects.index')" :current="request()->routeIs('admin.projects.*')" wire:navigate>
+                    <flux:sidebar.item icon="briefcase" :href="route('admin.projects.index')" :current="request()->routeIs('admin.projects.*')" wire:navigate>
                         {{ __('Projects') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item :href="route('admin.skills.index')" :current="request()->routeIs('admin.skills.*')" wire:navigate>
+                    <flux:sidebar.item icon="cpu-chip" :href="route('admin.skills.index')" :current="request()->routeIs('admin.skills.*')" wire:navigate>
                         {{ __('Skills') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item :href="route('admin.inquiries.index')" :current="request()->routeIs('admin.inquiries.*')" wire:navigate>
+                    <flux:sidebar.item icon="inbox" :href="route('admin.inquiries.index')" :current="request()->routeIs('admin.inquiries.*')" wire:navigate>
                         {{ __('Inquiries') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item :href="route('admin.settings.edit')" :current="request()->routeIs('admin.settings.edit')" wire:navigate>
+                    <flux:sidebar.item icon="pencil-square" :href="route('admin.settings.edit')" :current="request()->routeIs('admin.settings.edit')" wire:navigate>
                         {{ __('Portfolio') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
@@ -33,12 +33,8 @@
             <flux:spacer />
 
             <flux:sidebar.nav>
-                <flux:sidebar.item icon="folder-git-2" :href="route('home')" target="_blank">
+                <flux:sidebar.item icon="arrow-top-right-on-square" :href="route('home')" target="_blank">
                     {{ __('Public Site') }}
-                </flux:sidebar.item>
-
-                <flux:sidebar.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                    {{ __('Starter Docs') }}
                 </flux:sidebar.item>
             </flux:sidebar.nav>
 
@@ -46,8 +42,10 @@
         </flux:sidebar>
 
         <!-- Mobile User Menu -->
-        <flux:header class="lg:hidden">
+        <flux:header class="border-b border-zinc-200 bg-white lg:hidden dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
+
+            <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate class="ms-2" />
 
             <flux:spacer />
 

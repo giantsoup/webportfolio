@@ -47,9 +47,9 @@ class Form extends Component
     /**
      * Keep the slug aligned with the name until manually changed.
      */
-    public function updatedName(string $value): void
+    public function updatingName(string $value): void
     {
-        if (! $this->skill || $this->slug === '' || $this->slug === Str::slug($this->skill->name)) {
+        if ($this->slug === '' || $this->slug === Str::slug($this->name)) {
             $this->slug = Str::slug($value);
         }
     }

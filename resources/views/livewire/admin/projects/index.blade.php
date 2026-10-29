@@ -1,62 +1,55 @@
 <div class="flex flex-col gap-6">
-    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div>
-            <h1 class="text-2xl font-semibold text-zinc-900 dark:text-white">Projects</h1>
-            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Manage the public work index and project detail pages.</p>
-        </div>
+    <x-admin.page-header
+        :kicker="__('Content')"
+        :heading="__('Projects')"
+        :description="__('Manage the public work index and project detail pages.')"
+    >
+        <flux:button :href="route('admin.projects.import')" wire:navigate icon="arrow-down-tray">{{ __('Import from GitHub') }}</flux:button>
+        <flux:button :href="route('admin.projects.create')" wire:navigate variant="primary" icon="plus">{{ __('New project') }}</flux:button>
+    </x-admin.page-header>
 
-        <flux:button :href="route('admin.projects.create')" wire:navigate>{{ __('New project') }}</flux:button>
-    </div>
+    <x-admin.status />
 
-    @if (session('status'))
-        <div class="rounded-xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-700 dark:text-green-300">
-            {{ session('status') }}
-        </div>
-    @endif
+    <x-admin.panel class="py-2">
+        <flux:table :paginate="$projects" class="relative">
+            <flux:table.columns>
+                <flux:table.column>{{ __('Project') }}</flux:table.column>
+                <flux:table.column class="max-md:hidden">{{ __('Category') }}</flux:table.column>
+                <flux:table.column>{{ __('Status') }}</flux:table.column>
+                <flux:table.column class="max-sm:hidden">{{ __('Published') }}</flux:table.column>
+                <flux:table.column align="end"><span class="sr-only">{{ __('Actions') }}</span></flux:table.column>
+            </flux:table.columns>
 
-    <div class="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-900">
-        <table class="min-w-full divide-y divide-zinc-200 dark:divide-zinc-700">
-            <thead class="bg-zinc-50 dark:bg-zinc-800/50">
-                <tr class="text-left text-xs uppercase tracking-[0.18em] text-zinc-500">
-                    <th class="px-4 py-3">Project</th>
-                    <th class="px-4 py-3">Category</th>
-                    <th class="px-4 py-3">Status</th>
-                    <th class="px-4 py-3">Published</th>
-                    <th class="px-4 py-3 text-right">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800">
+            <flux:table.rows>
                 @forelse ($projects as $project)
-                    <tr wire:key="project-row-{{ $project->id }}">
-                        <td class="px-4 py-4">
-                            <p class="font-medium text-zinc-900 dark:text-white">{{ $project->title }}</p>
-                            <p class="mt-1 text-sm text-zinc-500">{{ $project->slug }}</p>
-                        </td>
-                        <td class="px-4 py-4 text-sm text-zinc-600 dark:text-zinc-300">{{ $project->category }}</td>
-                        <td class="px-4 py-4 text-sm text-zinc-600 dark:text-zinc-300">
-                            {{ $project->is_published ? 'Published' : 'Draft' }}
-                            @if ($project->is_featured)
-                                <span class="ml-2 rounded-full bg-zinc-100 px-2 py-1 text-[10px] uppercase tracking-[0.14em] text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">Featured</span>
-                            @endif
-                        </td>
-                        <td class="px-4 py-4 text-sm text-zinc-600 dark:text-zinc-300">{{ $project->published_at?->format('M j, Y') ?? '—' }}</td>
-                        <td class="px-4 py-4">
-                            <div class="flex justify-end gap-3 text-sm">
-                                <a href="{{ route('admin.projects.edit', $project) }}" wire:navigate class="font-medium text-zinc-900 dark:text-white">Edit</a>
-                                <button type="button" wire:click="delete({{ $project->id }})" wire:confirm="Delete this project?" class="font-medium text-red-600 dark:text-red-400">Delete</button>
+                    <flux:table.row wire:key="project-row-{{ $project->id }}">
+                        <flux:table.cell variant="strong" class="max-w-xs">
+                            <a href="{{ route('admin.projects.edit', $project) }}" wire:navigate class="block truncate hover:text-accent-content">{{ $project->title }}</a>
+                            <p class="mt-0.5 truncate font-mono text-xs font-normal text-zinc-500 dark:text-zinc-400">/work/{{ $project->slug }}</p>
+                        </flux:table.cell>
+                        <flux:table.cell class="max-md:hidden">{{ $project->category }}</flux:table.cell>
+                        <flux:table.cell>
+                            <div class="flex items-center gap-1.5">
+                                <flux:badge size="sm" :color="$project->is_published ? 'emerald' : 'zinc'">{{ $project->is_published ? __('Published') : __('Draft') }}</flux:badge>
+                                @if ($project->is_featured)
+                                    <flux:badge size="sm" color="rose" icon="star">{{ __('Featured') }}</flux:badge>
+                                @endif
                             </div>
-                        </td>
-                    </tr>
+                        </flux:table.cell>
+                        <flux:table.cell class="tabular-nums max-sm:hidden">{{ $project->published_at?->format('M j, Y') ?? '—' }}</flux:table.cell>
+                        <flux:table.cell align="end">
+                            <div class="flex justify-end gap-1">
+                                <flux:button :href="route('admin.projects.edit', $project)" wire:navigate size="sm" variant="ghost" icon="pencil-square" :tooltip="__('Edit')" :aria-label="__('Edit :name', ['name' => $project->title])" />
+                                <flux:button wire:click="delete({{ $project->id }})" wire:confirm="Delete this project?" size="sm" variant="ghost" icon="trash" class="text-red-600! dark:text-red-400!" :tooltip="__('Delete')" :aria-label="__('Delete :name', ['name' => $project->title])" />
+                            </div>
+                        </flux:table.cell>
+                    </flux:table.row>
                 @empty
-                    <tr>
-                        <td colspan="5" class="px-4 py-10 text-center text-sm text-zinc-500">No projects yet.</td>
-                    </tr>
+                    <flux:table.row>
+                        <flux:table.cell colspan="5" class="py-10 text-center">{{ __('No projects yet.') }}</flux:table.cell>
+                    </flux:table.row>
                 @endforelse
-            </tbody>
-        </table>
-    </div>
-
-    <div>
-        {{ $projects->links() }}
-    </div>
+            </flux:table.rows>
+        </flux:table>
+    </x-admin.panel>
 </div>

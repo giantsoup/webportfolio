@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\Middleware\EnsurePasswordIsConfirmed;
 use App\Http\Middleware\EnsureUserIsAdmin;
+use App\Services\GitHub\GitHubClient;
 use Carbon\CarbonImmutable;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -22,7 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(GitHubClient::class, fn (): GitHubClient => new GitHubClient(
+            username: config('services.github.username'),
+            token: config('services.github.token'),
+        ));
     }
 
     /**

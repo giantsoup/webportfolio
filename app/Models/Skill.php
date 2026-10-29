@@ -36,6 +36,32 @@ class Skill extends Model
     }
 
     /**
+     * Get the IDs of the skills whose name or slug matches any of the given terms, such as
+     * GitHub topics and languages. Matching ignores case, spaces and punctuation.
+     *
+     * @param  iterable<string>  $terms
+     * @return list<int>
+     */
+    public static function idsMatching(iterable $terms): array
+    {
+        $normalize = fn (string $value): string => preg_replace('/[^a-z0-9]/', '', Str::lower($value));
+
+        $normalizedTerms = collect($terms)->map($normalize)->filter()->unique();
+
+        if ($normalizedTerms->isEmpty()) {
+            return [];
+        }
+
+        return static::query()
+            ->get(['id', 'name', 'slug'])
+            ->filter(fn (Skill $skill): bool => $normalizedTerms->contains($normalize($skill->name))
+                || $normalizedTerms->contains($normalize($skill->slug)))
+            ->pluck('id')
+            ->values()
+            ->all();
+    }
+
+    /**
      * Get the projects attached to the skill.
      *
      * @return BelongsToMany<Project, $this>

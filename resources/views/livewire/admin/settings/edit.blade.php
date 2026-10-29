@@ -1,62 +1,60 @@
 <div class="flex flex-col gap-6">
-    <div>
-        <h1 class="text-2xl font-semibold text-zinc-900 dark:text-white">Portfolio settings</h1>
-        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Manage the singleton content used across the public portfolio.</p>
-    </div>
+    <x-admin.page-header
+        :kicker="__('Content')"
+        :heading="__('Portfolio settings')"
+        :description="__('Manage the singleton content used across the public portfolio.')"
+    >
+        <flux:button :href="route('home')" target="_blank" rel="noreferrer" variant="ghost" icon:trailing="arrow-top-right-on-square">{{ __('View public site') }}</flux:button>
+        <flux:button type="submit" form="portfolio-settings-form" variant="primary" icon="check">{{ __('Save settings') }}</flux:button>
+    </x-admin.page-header>
 
-    @if (session('status'))
-        <div class="rounded-xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-700 dark:text-green-300">
-            {{ session('status') }}
-        </div>
-    @endif
+    <x-admin.status />
 
-    <form wire:submit="save" class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-        <div class="space-y-6 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-700 dark:bg-zinc-900">
-            <div class="grid gap-4 md:grid-cols-3">
-                <flux:input wire:model="hero_kicker" :label="__('Hero kicker')" required />
-                <flux:input wire:model="hero_title" :label="__('Hero title')" required />
-                <flux:input wire:model="hero_emphasis" :label="__('Hero emphasis')" required />
-            </div>
+    <form id="portfolio-settings-form" wire:submit="save" class="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_24rem]">
+        <div class="space-y-6">
+            <x-admin.panel :heading="__('Cover')" :description="__('The headline block at the top of the home page.')">
+                <div class="grid gap-6 md:grid-cols-3">
+                    <flux:input wire:model.live.debounce.300ms="hero_kicker" :label="__('Hero kicker')" required />
+                    <flux:input wire:model.live.debounce.300ms="hero_title" :label="__('Hero title')" required />
+                    <flux:input wire:model.live.debounce.300ms="hero_emphasis" :label="__('Hero emphasis')" required />
+                </div>
 
-            <label class="grid gap-2">
-                <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Hero summary</span>
-                <textarea wire:model="hero_summary" rows="5" class="rounded-xl border border-zinc-200 bg-white px-4 py-3 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"></textarea>
-            </label>
+                <flux:textarea wire:model.live.debounce.500ms="hero_summary" :label="__('Hero summary')" rows="5" />
+            </x-admin.panel>
 
-            <div class="grid gap-4 md:grid-cols-2">
-                <flux:input wire:model="availability_text" :label="__('Current focus text')" required />
-                <flux:input wire:model="location_label" :label="__('Location label')" />
-            </div>
+            <x-admin.panel :heading="__('Profile facts')" :description="__('Short facts shown around the site and in the footer.')">
+                <div class="grid gap-6 md:grid-cols-2">
+                    <flux:input wire:model="availability_text" :label="__('Current focus text')" required />
+                    <flux:input wire:model="location_label" :label="__('Location label')" icon="map-pin" />
+                </div>
 
-            <div class="grid gap-4 md:grid-cols-3">
-                <flux:input wire:model="years_experience" :label="__('Years experience')" type="number" min="0" required />
-                <flux:input wire:model="projects_completed" :label="__('Projects completed')" type="number" min="0" required />
-                <flux:input wire:model="schedule_label" :label="__('Schedule label')" />
-            </div>
+                <div class="grid gap-6 md:grid-cols-3">
+                    <flux:input wire:model="years_experience" :label="__('Years experience')" type="number" min="0" required />
+                    <flux:input wire:model="projects_completed" :label="__('Projects completed')" type="number" min="0" required />
+                    <flux:input wire:model="schedule_label" :label="__('Schedule label')" icon="clock" />
+                </div>
+            </x-admin.panel>
         </div>
 
         <div class="space-y-6">
-            <div class="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-700 dark:bg-zinc-900">
-                <h2 class="text-lg font-semibold text-zinc-900 dark:text-white">Social links</h2>
-                <div class="mt-5 space-y-4">
-                    <flux:input wire:model="github_url" :label="__('GitHub URL')" type="url" />
-                    <flux:input wire:model="linkedin_url" :label="__('LinkedIn URL')" type="url" />
-                    <flux:input wire:model="x_url" :label="__('X URL')" type="url" />
+            <x-admin.panel :heading="__('Preview')" :description="__('Approximates the home page cover.')">
+                <div class="overflow-hidden rounded-lg border border-portfolio-night-line bg-portfolio-night p-5 text-portfolio-bone">
+                    <p class="font-ui text-[10px] font-bold tracking-[0.24em] break-words text-portfolio-signal uppercase">{{ $hero_kicker }}</p>
+                    <p class="mt-3 font-display text-4xl leading-[0.85] font-black break-words uppercase">
+                        <span class="block">{{ $hero_title }}</span>
+                        <span class="mt-1 inline-block -rotate-1 bg-portfolio-signal px-1.5 text-portfolio-night">{{ $hero_emphasis }}</span>
+                    </p>
+                    <p class="mt-4 line-clamp-4 text-sm leading-6 text-portfolio-fog">{{ $hero_summary }}</p>
                 </div>
-            </div>
+            </x-admin.panel>
 
-            <div class="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-700 dark:bg-zinc-900">
-                <h2 class="text-lg font-semibold text-zinc-900 dark:text-white">Preview</h2>
-                <div class="mt-5 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-700 dark:bg-zinc-800">
-                    <p class="text-xs uppercase tracking-[0.18em] text-zinc-500">{{ $hero_kicker }}</p>
-                    <p class="mt-3 text-3xl font-semibold text-zinc-900 dark:text-white">{{ $hero_title }} <span class="text-fuchsia-500">{{ $hero_emphasis }}</span></p>
-                    <p class="mt-4 text-sm leading-7 text-zinc-600 dark:text-zinc-300">{{ $hero_summary }}</p>
-                </div>
-            </div>
+            <x-admin.panel :heading="__('Social links')">
+                <flux:input wire:model="github_url" :label="__('GitHub URL')" type="url" icon="code-bracket" placeholder="https://" />
+                <flux:input wire:model="linkedin_url" :label="__('LinkedIn URL')" type="url" icon="link" placeholder="https://" />
+                <flux:input wire:model="x_url" :label="__('X URL')" type="url" icon="at-symbol" placeholder="https://" />
+            </x-admin.panel>
 
-            <div class="flex justify-end">
-                <flux:button type="submit">{{ __('Save settings') }}</flux:button>
-            </div>
+            <flux:button type="submit" variant="primary" icon="check" class="w-full">{{ __('Save settings') }}</flux:button>
         </div>
     </form>
 </div>
